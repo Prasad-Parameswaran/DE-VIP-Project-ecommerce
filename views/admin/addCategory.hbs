@@ -1,0 +1,97 @@
+<!-- PAGE INNER
+            ================================================== -->
+<div class="page-inner">
+
+    <!-- PAGE MAIN WRAPPER
+                ================================================== -->
+    <div id="main-wrapper">
+
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                {{!-- <div class="card card-white"> --}}
+                    {{!-- <div class="card-heading clearfix">
+                        <h4 class="card-title">Upload your Category</h4>
+                    </div> --}}
+                    <div class="card-body">
+                        <form class="form-inline" action="/admin/addCategory"method="post" enctype="multipart/form-data">
+                            <!-- row -->
+                            <div class="row">
+                                <div class="col-md-12 grid-margin">
+                                    <div class="card card-white">
+                                        <div class="card-heading clearfix">
+                                            <h4 class="card-title">Add your category description</h4>
+                                             {{#if exist}}
+                                              
+                                                <h6  id="message-div" style="color: brown;">category exist</h6>
+                                                 {{else}}
+                                             <h6  id="message-div" style="color: rgb(62, 217, 35);">category added</h6>  
+                                             {{/if}}
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="exampleInput1">Category Name</label>
+                                                <input type="text" class="form-control" name="categoryName" id="name"
+                                                    placeholder="Enter category name"
+                                                    aria-describedby="exampleInput1" />
+                                                  
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Description</label>
+                                                <textarea class="form-control" id="description" name="description"
+                                                    rows="3" placeholder="Enter category description"></textarea>
+                                            </div>
+                                            <div class="card card-white mb-3">
+                                                <div class="card-heading clearfix">
+                                                    <h4 class="card-title">Image</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div>
+                                                                <input class="form-control form-control-lg" id="image"
+                                                                    name="image" type="file" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         
+                                        <div class="text-center" style="padding-top: 5vh;">
+                                            <div>
+                                                <button type="submit" class="btn btn-primary">Create
+                                                    Category</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+</div>
+
+<script>
+    var toast = document.getElementById("message-div");
+    var messageOne = "<%= exist %>";
+    var messageTwo = "<%= added %>"; 
+    
+    if (messageOne) {
+        setTimeout(function () {
+            toast.innerText = '';
+        }, 3000);
+    } else if (messageTwo) {
+        setTimeout(function () {
+            toast.innerText = '';
+        }, 3000);
+    }
+</script>

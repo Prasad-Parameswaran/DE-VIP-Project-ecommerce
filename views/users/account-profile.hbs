@@ -1,0 +1,129 @@
+
+        <!-- PAGE TITLE
+        ================================================== -->
+        <section class="page-title-section bg-img cover-background" data-background="/user/img/bg/page-title.jpg">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1>My Profile</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/account-profile">My Profile</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- ACCOUNT ORDERS
+        ================================================== -->
+     <section class="md">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- left panel -->
+            <div class="col-lg-4 col-sm-9 mb-2-3 mb-lg-0">
+                <div class="account-pannel">
+                    <div class="p-4">
+                        <div class="text-center">
+                            <div class="pb-3">
+                                <img class="img-fluid rounded-circle img-thumbnail" src="/user/img/avatar/t-3.jpg" style="height: 100px; width: 100px; object-fit: cover;" xoriginal="/images/{{product.imageUrl.[0].filename}}" alt="...">
+                            </div>
+                            <h6 class="mb-0 display-28">{{user.name}}</h6>
+                        </div>
+                    </div>
+                    <div class="list-group">
+                        <a class="list-group-items active" href="/account-profile"><i class="ti-user pe-2"></i>Profile</a>
+                        <a class="list-group-items" href="/account-orders"><i class="ti-bag pe-2"></i>Orders<span class="badge badge-pill"></span></a>
+                        <a class="list-group-items" href="/account-address"><i class="ti-location-pin pe-2"></i>Addresses</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end left panel -->
+
+            <!-- right panel -->
+            <div class="col-lg-8">
+                <div class="common-block">
+                    <div class="inner-title">
+                        <h4 class="mb-0">My Profile</h4>
+                        <p class="mb-0">Time for a Sharp My profile.</p>
+                    </div>
+                    <form method="post" action="/profileEdit">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                {{#if user}}
+                                <div class="form-group">
+                                    <label>Your Name</label>
+                                    <input type="text" class="form-control" name="name" value="{{user.name}}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Your User Name</label>
+                                    <input type="text" class="form-control" name="username" value="{{user.userName}}" placeholder="Your user name here">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <input type="email" class="form-control" name="email" value="{{user.email}}" placeholder="Your email here">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Contact Number</label>
+                                    <input type="text" class="form-control" name="phone" value="{{user.phoneNumber}}" placeholder="+40-123 456 789">
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
+                        <button type="submit" class="butn-style2 mt-4">Update Profile</button>
+                    </form>
+                </div>
+
+                <div class="col-lg-12">
+                    <div id="accordion" class="accordion-style3">
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <a >Address Management</a>
+                                    </button>
+                                </h5>
+                            </div>
+                            {{#if userAddress }}
+                            {{#each userAddress}}
+                            <div class="collapse" name="address" id="collapseTwo" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+                                <div class="card-body">
+                                    <address>
+                                       {{ fullname}}, <br>
+                                        {{address}},<br>
+                                        {{city}} ,
+                                        {{state}},
+                                        {{country}} <br>
+                                        {{pincode}} ,
+                                    </address>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 mb-1">
+                                   <a class="butn-style2" href="/getEdit/?index={{@index}}">Edit address</a>
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                         <a class="butn-style2" href="/deleteAddress/?addressId={{_id}}">Delete address</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                <!-- end right panel -->
+            </div>
+        </div>
+    </div>
+</section>
+

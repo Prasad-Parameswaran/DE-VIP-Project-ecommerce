@@ -1,0 +1,210 @@
+<!-- LOGIN REGISTER
+        ================================================== -->
+<section class="md">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6 mb-1-9 mb-lg-0">
+
+                <div class="common-block">
+                   
+                    <div class="inner-title">
+                        <h4 class="mb-0">Login</h4>
+                        <p class="mb-0" style="color: brown;">{{message}}</p>
+                    </div>
+                     {{#if isBlock}}
+                    <div>
+                        <p style="color: brown;">{{isBlock}}</p>
+                    </div>
+                    {{/if}}
+
+                    <form>
+                        {{!-- method="post" action="/home" --}}
+                        <div class="row">
+
+                            <div class="col-sm-12">
+
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" id="email" value="" name="email"
+                                        placeholder="Your user name here">
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-12">
+
+                                <div class="form-group">
+                                    <label>Password </label>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="Your password here">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <h6 id="message" style="color: brown;"></h6>
+
+                            <div class="col-sm-6">
+                                <label class="form-check-label" for="login-remember">Don't have an account ?<a
+                                        href="/registration">Register</a></label>
+                            </div>
+                        </div>
+                    </form>
+                    <button onclick="login()" class="butn-style2 mt-4">Login</button>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="form-check-label" for="login-remember"><a href="/forgotPass">Forgot you
+                                    Password Click Here :)</a></label>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+   {{!-- console.log("aprove", response)
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'bottom-left',
+                            showConfirmButton: false,
+                            timer: 500,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        }) --}}
+
+  {{!-- Toast.fire({
+                            icon: 'success',
+                            title: 'Signed in successfully'
+                        }).then(() => {
+                            location.href = `/`
+                        }) --}}
+
+<script src="sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+
+<script>
+    function login() {
+        console.log("hiii5555")
+        const email = document.getElementById('email').value
+        const password = document.getElementById('password').value
+        if (email == "" || password == "") {
+            document.getElementById('message').innerHTML = 'Please Fill!'
+        } else {
+            document.getElementById('message').innerHTML = ''
+
+            $.ajax({
+                url: `/home`,
+                method: "post",
+                data: {
+                    email,
+                    password
+                },
+                success: (response) => {
+                    if (response === "sucess") {
+                     
+                            location.href = `/`
+                    
+                    }
+                }
+            })
+        }
+
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {{!-- <script src="../../public/js/Validation.js"></script>
+  <script> 
+    const nameInput = document.getElementById('nameInput');
+    const emailInput = document.getElementById('email');
+       const phoneInput = document.getElementById('phoneInput');
+          const passinput = document.getElementById('password');
+             const repassinput = document.getElementById('repassinput');
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const isNameValid = validateRequired(nameInput);
+      const isEmailValid = validateEmail(emailInput);
+      const isMobvalid = validateMobileNumber(phoneInput)
+        const ispassvalid = validatePassword(passinput)
+          const isrepassvalid = validatePassword(repassinput)
+
+      if (isNameValid && isEmailValid && isMobvalid && ispassvalid && isrepassvalid) {
+        // Submit the form or perform further actions
+        alert('Form submitted successfully!');
+      }
+    });
+
+    nameInput.addEventListener('blur', () => {
+      validateRequired(nameInput);
+    });
+
+    emailInput.addEventListener('blur', () => {
+      validateEmail(emailInput);
+    });
+
+    
+    phoneInput.addEventListener('blur', () => {
+      validateMobileNumber(phoneInput);
+    });
+
+      passinput.addEventListener('blur', () => {
+      validatePassword(passinput);
+    });
+      repassinput.addEventListener('blur', () => {
+      validatePassword(repassinput);
+    });
+  </script> --}}

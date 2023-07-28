@@ -1,0 +1,208 @@
+      <!-- PAGE TITLE
+        ================================================== -->
+        <section class="page-title-section bg-img cover-background" data-background="/user/img/bg/page-title.jpg">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1>Contact / Shipping Address</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/account-address">Contact / Shipping Address</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- ACCOUNT ADDRESS
+        ================================================== -->
+        <section class="md">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <!-- left panel -->
+                    <div class="col-lg-4 col-sm-9 mb-2-3 mb-lg-0">
+
+                        <div class="account-pannel">
+
+                            <div class="p-4">
+
+                                <div class="text-center">
+                                    <div class="pb-3">
+                                        <img class="img-fluid rounded-circle img-thumbnail" src="/user/img/avatar/t-3.jpg" style="height: 100px;
+                                            width: 100px;
+                                            object-fit: cover;" xoriginal="/images/{{product.imageUrl.[0].filename}}" alt="...">
+                                    </div>
+                                    <h6 class="mb-0 display-28">{{user.name}}</h6>
+                                    {{!-- <small>Joined February 06, 2017</small> --}}
+                                    {{!-- <div class="reward-points">
+                                        <i class="ti-star text-primary pe-1"></i> Points: 7386
+                                    </div> --}}
+                                </div>
+                            </div>
+
+                            <div class="list-group">
+                                <a class="list-group-items" href="/account-profile"><i class="ti-user pe-2"></i>Profile</a>
+                               <a class="list-group-items" href="/account-orders"><i class="ti-bag pe-2"></i>Orders<span class="badge badge-pill">6</span></a>
+                                <a class="list-group-items active" href="/account-address"><i class="ti-location-pin pe-2"></i>Addresses</a>
+                                {{!-- <a class="list-group-items" href="account-wishlist.html"><i class="ti-heart pe-2"></i>Wishlist<span class="badge badge-pill">3</span></a>
+                                <a class="list-group-items" href="account-tickets.html"><i class="ti-tag pe-2"></i>My Tickets<span class="badge badge-pill">4</span></a> --}}
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- end left panel -->
+
+                    <!-- right panel -->
+                    <div class="col-lg-8">
+
+                        <div class="common-block">
+
+                            <div class="inner-title">
+                                <h4 class="mb-0">Contact Address</h4>
+                            </div>
+
+                            <form method="post" action="/editAddress/?id={{editAdress._id}}">
+                            
+                               
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" class="form-control" value="{{editAdress.fullname}}" name="name" placeholder="Your company name here">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            <input type="text" class="form-control" value="{{editAdress.address}}" name="address" placeholder="Your address here">
+                                        </div>
+
+                                    </div>
+                                     {{!-- <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>phoneNumber</label>
+                                            <input type="number" class="form-control" name="phoneNumber" placeholder="Your address here">
+                                        </div>
+
+                                    </div> --}}
+                                    {{!-- <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>Street</label>
+                                            <input type="text" class="form-control" name="street" placeholder="Your address here">
+                                        </div>
+
+                                    </div> --}}
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <input type="text" class="form-control" value="{{editAdress.city}}" name="city" placeholder="Your city name here">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>State</label>
+                                            <input type="text" class="form-control" value="{{editAdress.state}}" name="state" placeholder="Your state name here">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>Pin Code</label>
+                                            <input type="text" class="form-control" value="{{editAdress.pincode}}" name="pinCode" placeholder="Your Pin Code">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>Country</label>
+                                            <select class="form-control form-select"  name="mycountry">
+                                                <option value="" selected="selected">Select a country</option>
+                                                <option value="AF" >Afghanistan</option>
+                                                <option value="AL" >Albania</option>
+                                                <option value="DZ">Algeria</option>
+                                                <option value="AD">Andorra</option>
+                                                <option value="GY">Guyana</option>
+                                                <option value="HT">Haiti</option>
+                                                <option value="HM">Heard Island and McDonald Islands</option>
+                                                <option value="HN">Honduras</option>
+                                                <option value="HK">Hong Kong</option>
+                                                <option value="HU">Hungary</option>
+                                                <option value="IS">Iceland</option>
+                                                <option value="India" >India</option>
+                                                <option value="ID" >Indonesia</option>
+                                                <option value="IR" >Iran</option>
+                                                <option value="IQ">Iraq</option>
+                                                <option value="IM">Isle of Man</option>
+                                                <option value="IL">Israel</option>
+                                                <option value="IT">Italy</option>
+                                                <option value="CI">Ivory Coast</option>
+                                                <option value="JM">Jamaica</option>
+                                                <option value="JP">Japan</option>
+                                                <option value="JE">Jersey</option>
+                                                <option value="JO">Jordan</option>
+                                                <option value="WS">Western Samoa</option>
+                                                <option value="YE">Yemen</option>
+                                                <option value="ZM">Zambia</option>
+                                                <option value="ZW">Zimbabwe</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div> 
+                                         <a href=""><button type="submit" class="butn-style2 mt-4 text-align-center">Edit Address</button></a>
+                                    </div>
+
+                                </div>
+
+                                {{!-- <div class="inner-title mt-1-9">
+                                    <h4 class="mb-0">Shipping Address</h4>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 mb-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="same-contact">
+                                            <label class="form-check-label" for="same-contact">Same as contact address</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <button type="button" class="butn-style2 mt-4">Update Address</button> --}}
+                        
+                            </form>
+
+                        </div>
+
+                    </div>
+                    <!-- end right panel -->
+                </div>
+            </div>
+        </section>

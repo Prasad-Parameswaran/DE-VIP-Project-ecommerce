@@ -1,0 +1,304 @@
+{{!-- <!-- PAGE TITLE
+        ================================================== -->
+<section class="page-title-section bg-img cover-background" data-background="">
+    <div class="container">
+
+        <div class="title-info">
+            <h1>Shop Checkout</h1>
+        </div>
+        <div class="breadcrumbs-info">
+            <ul class="ps-0">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Shop Checkout</a></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<!-- CHECKOUT
+        ================================================== -->
+<section class="md">
+    <div class="container">
+
+            <div class="row">
+
+
+
+                <!-- left pannel section -->
+                <div class="col-lg-9 col-md-12 ps-2-3 mb-1-9 mb-lg-0">
+                    <!-- product listing -->
+                    {{#each prod}}
+                    <div class="row g-0 product-listing">
+
+                        <div class="col-sm-4">
+                            <div class="product-img">
+                                <a href="">
+                                    <img src=" /images/{{this.product.imageUrl.[0].filename}}" style="height: 85px;
+                                        width: 60px;
+                                        object-fit: cover; border-radius: 20%;" alt="..."></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8">
+
+                            <div class="product-list side-bar">
+
+                                <!-- <div class="product-description"> -->
+                                <div class="">
+                                    <h5><a href="">
+                                            {{this.product.name}}</a>
+                                    </h5>
+                                    <!-- <h4 class="price"> -->
+                                    <div>
+                                        <span class="pe-2 display-29">Qty: {{quantity}}</span><br>
+                                        <span class="pe-2 display-29">₹{{total}} </span>
+                                        <!-- </h4> -->
+                                    </div>
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    {{/each}}
+
+                    <!-- product listing end -->
+
+                    <div class="common-block mb-2">
+
+                        <div class="inner-title">
+
+                            <h5 class="mb-0"><span class="ti-location-pin pe-2 display-29"></span>Delivery Address</h5>
+                        </div>
+                        {{!-- <p class="form-text" id="" style="color:red">addAddressErr </p> --}}
+
+                        <div id="accordion" class="accordion-style3">
+
+     <div class="col-lg-12">
+            <div id="addressAccordion" class="accordion-style3"> <!-- Changed id to addressAccordion -->
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#addressCollapse" aria-expanded="true" aria-controls="addressCollapse">
+                                <a>Address Management</a>
+                            </button>
+                        </h5>
+                    </div>
+                    {{#if userAddress }}
+                    {{#each userAddress}}
+                    <div class="collapse" name="address" id="addressCollapse" <!-- Changed id to addressCollapse -->
+                        aria-labelledby="headingTwo" data-bs-parent="#addressAccordion">
+                        <label style="color: black;">
+                            <input type="radio" id="{{_id}}" value="{{_id}}" name="address" checked>
+                            Select address
+                        </label>
+                        <div class="card-body">
+                            <address>
+                                {{fullname}}, <br>
+                                {{address}},<br>
+                                {{city}},
+                                {{state}},
+                                {{country}} <br>
+                                {{pincode}},
+                            </address>
+                        </div>
+                    </div>
+                    {{/each}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+
+                        </div>
+                        <div class="mt-4">
+                            <div class="mb-0">
+                                <a href="/account-address" class="mb-0"><span
+                                        class="fas fa-plus pe-2 display-29"></span>Add a
+                                    new Address</a>
+                                <!-- <a class="" href="/address" style="" data-bs-toggle="" data-bs-target="#" aria-expanded="false" aria-controls=""><span class="fas fa-plus"></span>Add a new address</a> -->
+                            </div>
+                        </div>
+                      
+                    </div>
+                    <div class="common-block">
+
+                        <div class="inner-title">
+                            <h5 class="mb-0">Choose Payment Method</h5>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="Cash-On-Delivery"
+                                value="cash on delivery" checked>
+                            <label class="form-check-label" for="Cash-On-Delivery">
+                                Cash On Delivery
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="Razorpay" value="paypal"
+                                name="paymentMethod" checked>
+                            <label class="form-check-label" for="Razorpay">
+                                paypal
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="wallet" value="Wallet"
+                                name="paymentMethod" checked>
+                            <label class="form-check-label" for="wallet">
+                                Wallet
+                            </label>
+                        </div>
+
+                        <input type="text" name="" value="" hidden>
+
+                        <div id="accordion" class="accordion-style3">
+
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button type="button" class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseTwo" aria-expanded="true"
+                                            aria-controls="collapseTwo"><i class="fab fa-paypal pe-2 display-29"></i>Pay
+                                            with PayPal </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordion">
+                                    <div class="card-body">
+
+                                        <h6 class="display-30 font-weight-600 mb-2">Paypal takes good care of you.</h6>
+
+                                        <div id="paypal-button-container"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button type="button" class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseThree" aria-expanded="true"
+                                            aria-controls="collapseThree"><i
+                                                class="fas fa-award pe-2 display-29"></i>de-vip wallet</button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
+                                    data-bs-parent="#accordion">
+                                    <div class="card-body">
+
+                                        <h6 class="display-30 font-weight-600 mb-2">You currently have <span
+                                                class="text-medium">userData.wallet</span> Wallet amount to spend.</h6>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- end left pannel section -->
+
+                <!-- right pannel section -->
+                <div class="col-lg-3 col-12 side-bar">
+
+                    <div class="widget">
+
+                        <div class="widget-title">
+                            <h5>Order Summary</h5>
+                        </div>
+
+                        <table class="table classic">
+                            <tbody>
+                                <tr>
+                                    <th>Cart total:</th>
+                                    <td class="text-gray-dark">
+                                        <span><input type="text" name="subtotal" id="totalAmount" class="form-control"
+                                                value=""
+                                                hidden>₹{{allCart.carttotal}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Shipping:</th>
+                                    <td class="text-gray-dark">
+                                        Free
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Discount:</th>
+                                    <td class="text-gray-dark" id="discountAmount">
+                                        No Discount
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                                        <th>Estimated tax:</th>
+                                        <td class="text-gray-dark">$9.72</td>
+                                    </tr> -->
+                                <tr>
+                                    <th>Total:</th>
+                                    <td class="text-lg text-gray-dark">
+                                        <span id="grandTotalAmount">₹{{allCart.carttotal}}</span>
+                                        <input type="text" name="total" id="grandTotal"
+                                            value="" hidden>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                   
+
+                </div>
+                <!-- end right pannel section -->
+
+            </div>
+         
+          <div style="text-align: center; padding-top: 30px;">
+                <button id="placeOrderBtn" class="butn-style2">Place an Order</button>
+           </div>
+   
+
+
+    </div>
+</section>
+ <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{{!--
+<script src="https://www.paypal.com/sdk/js?client-id=<%= clientId  %>" data-namespace="paypal_sdk"></script> --}}
+
+<script>
+    // Your previous script code ...
+
+    // Update the function name in the onclick attribute of the button
+    document.getElementById("placeOrderBtn").onclick = function () {
+        const address = $('input[type="radio"][name="address"]:checked').val();
+        const paymode = $('input[type="radio"][name="paymentMethod"]:checked').val();
+        
+        console.log(address, paymode);
+        
+        // Add your AJAX call here with the necessary data
+        $.ajax({
+            url: "/checkout",
+            method: "post",
+            data: {
+                address: address,
+                paymentMethod: paymode
+            },
+            success: function(response) {
+                // Handle the response here
+                alert("Order placed successfully!");
+                location.href('/')
+            },
+            error: function(error) {
+                // Handle error here
+                alert("Error placing the order.");
+            }
+        });
+    };
+</script> --}}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+  {{#if user}}
+    {{>userHead}}
+    {{/if}}
+   {{#if login}}
+     {{>userHead}}
+     {{/if}}
+     {{#if admin}}
+    {{>adminHead}}
+    {{/if}}
+     
+      {{#if adminlog}}
+    {{>adminlogHead}}
+     {{/if}}
+</head>
+  
+ <body>
+     
+     {{!-- user Header --}}
+     {{!-- {{log }} --}}
+
+    {{#if user}}
+    {{>user-header}}
+     {{/if}}
+      {{#if login}}
+    {{>user-header}}
+     {{/if}}
+     {{!-- admin Header --}}
+      {{#if admin}}
+    {{>admin-header}}
+     {{/if}}
+      {{#if adminlog}}
+    {{>admin-LogHeader}}
+     {{/if}}
+
+   {{{body}}} 
+
+     {{!-- user Footer --}}
+   {{#if user}}
+   {{>user-footer}}
+   {{/if}}
+   {{#if login}}
+   {{>user-loginFooter}}
+   {{/if}}
+
+  {{#if adminlog}}
+  {{>admin-LogFooter}}
+   {{/if}}
+
+     {{!-- admin Footer --}}
+       {{#if admin}}
+    {{>admin-footer}}
+     {{/if}}
+      {{#if adminlog}}
+    {{>user-footer}}
+     {{/if}}
+   
+
+   
+
+ </body>
+ </html>

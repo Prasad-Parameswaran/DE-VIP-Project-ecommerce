@@ -1,0 +1,202 @@
+
+            <!-- PAGE INNER
+            ================================================== -->
+            <div class="page-inner">
+
+                <!-- PAGE MAIN WRAPPER
+                ================================================== -->
+                <div id="main-wrapper">
+                    <!-- row -->
+                    <div class="row align-items-center grid-margin">
+                        <div class="col-12">
+                            <div class="card card-white">
+                                <div class="card-body row align-items-center">
+                                    <div class="col-12 col-md-5 mb-4 mb-md-0">
+                                        <h4 class="mb-0">Customers</h4>
+                                    </div>
+
+                                    <div class="col-12 col-md-7">
+
+                                        <div class="row">
+
+                                            {{!-- <div class="col-md-8 mb-3 mb-md-0">
+                                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="exampleInputEmail1" placeholder="search by name">
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <select class="form-control form-select">
+                                                    <option>Order Amount</option>
+                                                    <option>Highest To Lowest</option>
+                                                    <option>Lowest To Highest</option>
+                                                </select>
+                                            </div> --}}
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+                    <!-- Row -->
+                     
+                    <div class="row">
+                        <div class="col-12 grid-margin">
+                            <div class="card card-white">
+                                <div class="card-body">
+                                    <table class="table">
+                                        <thead class="bg-light">
+                                            <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Customer</th>
+                                                <th scope="col">email</th>
+                                                {{!-- <th scope="col">Total Orders</th> --}}
+                                                <th scope="col">Status</th>
+                                                {{!-- <th scope="col">Total Amount</th> --}}
+                                                {{!-- <th scope="col">Joining Date</th> --}}
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                    
+                                          
+                                        <tbody>
+                                         {{#each name}}
+                                            <tr>
+                                                <th scope="row">  {{addOne @index}}<br>
+                                               </th>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                  
+                                                        <div class="me-4">
+                                                            <img src="/img/avatars/avatar-01.jpg" class="rounded-circle" alt="...">
+                                                        </div>
+                                                        
+                                                        <div>  
+                                                       
+                                                            <h6 style="color: rgb(215, 34, 34);">{{name}}</h6>
+                                                            <span>{{name._id}}</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>{{email}}</td>
+                                                {{#if block}}
+                                                <td><span class="badge rounded-pill bg-soft-pink">Deactive</span></td>
+                                                {{else}}
+                                                  <td><span class="badge rounded-pill bg-success">Active</span></td>
+                                                 {{/if}}
+                                                {{#if block}}
+
+                                            <td><a > <button class="btn btn-success" onclick="unblockUser('{{_id}}')"> UnBlock</button></a></td>
+                                            {{!-- href="/admin/unblock/{{_id}}" --}}
+                                            {{else}}
+
+                                            <td><a >   <button class="btn btn-danger" onclick="blockUser('{{_id}}')">block</button>  </a></td> 
+                                            {{!-- href="/admin/block/{{_id}}" --}}
+                                            {{/if}}
+                                            </tr>
+                                         {{/each}}
+                                       </table>
+                                      
+                                         
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Row -->
+                </div>
+
+
+        
+          <script src="sweetalert2.all.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+
+
+<script>
+  function unblockUser(id) {
+    console.log(id)
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, unblock it!'
+    }).then((result) => {
+      console.log(id);
+      if (result.isConfirmed) {
+        $.ajax({
+          url: `/admin/unblock/${id}`,
+          method: "get",
+          success: (response) => {
+            console.log("approve", response);
+            Swal.fire(
+              'Unblocked!',
+              'User has been unblocked.',
+              'success'
+            ).then(() => {
+              location.reload();
+            });
+          },
+         
+        });
+      }else{
+         error: (error) => {
+            console.error("Error:", error);
+            Swal.fire(
+              'Error!',
+              'An error occurred while unblocking the user.',
+              'error'
+            );
+          }
+      }
+    });
+  }
+  
+</script>
+<script>
+     function blockUser(id) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, block it!'
+    }).then((result) => {
+      console.log(id);
+      if (result.isConfirmed) {
+        $.ajax({
+          url: `/admin/block/${id}`,
+          method: "get",
+          success: (response) => {
+            console.log("approve", response);
+            Swal.fire(
+              'blocked!',
+              'User has been blocked.',
+              'success'
+            ).then(() => {
+              location.reload();
+            });
+          },
+        });
+      }else{
+          error: (error) => {
+            console.error("Error:", error);
+            Swal.fire(
+              'Error!',
+              'An error occurred while blocking the user.',
+              'error'
+            );
+          }
+      }
+    });
+  }
+</script>

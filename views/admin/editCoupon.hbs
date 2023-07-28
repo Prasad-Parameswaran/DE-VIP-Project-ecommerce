@@ -1,0 +1,52 @@
+<!-- PAGE INNER -->
+<div class="page-inner">
+    <!-- PAGE MAIN WRAPPER -->
+    <div id="main-wrapper">
+        <!-- row -->
+        <div class="col-md-6 grid-margin">
+            <div class="card card-white h-100" style="margin: 0 auto;">
+                <div class="card-heading clearfix text-center" >
+                    <h4 class="card-title">EDIT COUPON</h4>
+                </div>
+                <div >
+                    <div class="card-body">
+                        <form method="post" action="/admin/postCoupon/?id={{coupon._id}}">
+                            <div class="form-group">
+                                <label for="exampleInput7">Coupon Code</label>
+                                <input type="text" name="code" value="{{coupon.code}}" class="form-control" id="exampleInput7">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput8">Percentage</label>
+                                <input type="number" name="percentage" value="{{coupon.percentage}}" class="form-control" id="exampleInput8">
+                            </div>
+                            {{!-- <div class="form-group">
+                                <label for="exampleInput8">Amount</label>
+                                <input type="number" name="amount" class="form-control" id="exampleInput8">
+                            </div> --}}
+                            <div class="form-group">
+                                <label for="dateInput">Date:</label>
+                                <input type="date" id="dateInput" value="{{coupon.expireAfter}}" name="date" value="2023-07-28">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput8">usage Limit</label>
+                                <input type="number" name="limit" value="{{coupon.usageLimit}}" class="form-control" id="exampleInput8">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput8">Min Amount</label>
+                                <input type="number" name="minamount" value="{{coupon.minCartAmount}}" class="form-control" id="exampleInput8">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput8">Max Amount</label>
+                                <input type="number" name="maxamount" value="{{coupon.maxCartAmount}}" class="form-control" id="exampleInput8">
+                            </div>
+                            <div class="text-center" style="padding-top: 5vh;">
+                              <button type="submit" class="btn btn-outline-success">Edit Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>

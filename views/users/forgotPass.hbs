@@ -1,0 +1,135 @@
+  
+             <!-- PAGE TITLE
+    ================================================== -->
+        {{!-- <section class="page-title-section bg-img cover-background" data-background="img/bg/page-title.jpg">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1>Login</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="home-shop-1.html">Forgot password</a></li>
+                        <li><a href="#">Login </a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>    --}}
+        <!-- LOGIN REGISTER
+        ================================================== -->
+        <section class="md">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <div class="col-lg-6 mb-1-9 mb-lg-0">
+
+                        <div class="common-block">
+
+                            <div class="inner-title">
+                                <h4 class="mb-0">Forgot password</h4>
+                                <p class="mb-0"style="color: brown;" >{{message}}</p>
+                            </div>
+
+                            <form method="post" action="/forgotPass">
+
+                                <div class="row">
+
+                                    <div class="col-sm-12">
+
+                                        <div class="form-group">
+                                            <label>Please Enter your monbileNumber</label>
+                                            <input type="number" class="form-control"  name="phoneNumber" placeholder="Your user name here">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                            <label class="form-check-label" for="login-remember">Don't have an account ?<a href="/registration">Register</a></label>                                
+                                    </div>
+                                </div>
+
+                                {{!-- <button type="submit" class="butn-style2 mt-4">Request OTP</button> --}}
+                                <button type="submit" class="butn-style2 mt-4" data-toggle="modal" data-target="#otpModal">
+  Request Otp
+</button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+                    </div>
+                    </div>
+
+                  
+                </section>
+       
+      
+<!-- Button to trigger the modal -->
+{{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#otpModal">
+  Submit Phone Number
+</button> --}}
+
+<!-- Modal -->
+<div class="modal fade" id="otpModal" tabindex="-1" role="dialog" aria-labelledby="otpModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="otpModalLabel">Enter OTP</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="otpInput">OTP:</label>
+            <input type="text" class="form-control" id="otpInput" placeholder="Enter OTP" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"   id="verifyOTPBtn" >Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    
+    <script>
+        console.log("haVDGH FBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
+$(document).ready(function() {
+  $('#verifyOTPBtn').click(function() {
+    var otp = $('#otpInput').val();
+    // Send OTP to backend for verification
+    $.ajax({
+      url: '/varfyOtp',
+      type: 'POST',
+      data: { otp: otp },
+      success: function(response) {
+        alert(response)
+        if (response === 'success') {
+          alert(response)
+          // OTP verified, move to the next page
+          window.location.href = '/conformPass';
+        } else {
+          // OTP verification failed, display an error message
+          alert('Invalid OTP. Please try again.');
+        }
+      },
+      error: function() {
+        // Error handling
+        alert('An error occurred while verifying the OTP. Please try again.');
+      }
+    });
+  });
+});
+</script>
