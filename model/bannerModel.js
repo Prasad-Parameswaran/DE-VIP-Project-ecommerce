@@ -22,6 +22,10 @@ const bannerSchema= new mongoose.Schema({
     imageUrl:{
         type:Array,
         required:true
+    },
+    status : {
+        type : String,
+        default : 'ACTIVE'
     }
 
 

@@ -1,4 +1,4 @@
-<div class="row">
+{{!-- <div class="row">
   <div class="col-xl-3 col-md-6 half-gutter grid-margin">
     <div class="card card-white">
       <div class="card-body">
@@ -324,7 +324,7 @@
 
 <!-- row -->
 <div class="row">
-  <div class="col-lg-6 col-xl-4 half-gutter grid-margin">
+  <div class="col-lg-6 col-xl-4 half-gutter grid-margin"> --}}
     {{! <div class="card card-white mb-3">
                                 <div class="card-heading clearfix">
                                     <h4 class="card-title">Social Source</h4>
@@ -835,3 +835,396 @@
                     </div>
                 </div>
             </div> }}
+
+   
+
+
+
+
+
+{{!-- 
+
+
+
+   
+      <!-- partial -->
+      <div class="row">
+        <div class="col-sm-4 grid-margin">
+          <div class="card">
+            <div class="card-body">
+              <h5>Total sales</h5>
+              <div class="row">
+                <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                  <div class="d-flex d-sm-block d-md-flex align-items-center">
+                    <h2 class="mb-0"></h2>
+                    <!-- <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p> -->
+                  </div>
+                  <!-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> -->
+                </div>
+                <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                  <i class="icon-lg mdi mdi-codepen text-primary ml-auto"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 grid-margin">
+          <div class="card">
+            <div class="card-body">
+              <h5>Panding payment</h5>
+              <div class="row">
+                <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                  <div class="d-flex d-sm-block d-md-flex align-items-center">
+                    <h2 class="mb-0">pendingCount </h2>
+                    <!-- <p class="text-success ml-2 mb-0 font-weight-medium">+8.3%</p> -->
+                  </div>
+                  <!-- <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6> -->
+                </div>
+                <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                  <i class="icon-lg mdi mdi-wallet-travel text-danger ml-auto"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 grid-margin">
+          <div class="card">
+            <div class="card-body">
+              <h5>Total clents</h5>
+              <div class="row">
+                <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                  <div class="d-flex d-sm-block d-md-flex align-items-center">
+                    <h2 class="mb-0">usersCount </h2>
+                    <!-- <p class="text-danger ml-2 mb-0 font-weight-medium">-2.1% </p> -->
+                  </div>
+                  <!-- <h6 class="text-muted font-weight-normal">2.27% Since last month</h6> -->
+                </div>
+                <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                  <i class="icon-lg mdi mdi-monitor text-success ml-auto"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title"> Chart-js </h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Charts</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Chart-js</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Line chart</h4>
+                  <canvas id="lineChart" style="height:250px"></canvas>
+                </div>
+              </div>
+            </div> 
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Bar chart</h4>
+                  <div id="mainchart">
+                  <canvas id="barChart" style="height:230px"></canvas>
+                </div>
+                  <select 
+                      class="form-control" 
+                      name="orderStatus"
+                      id="saleschange"
+                      onchange="ChartChange()"
+                      >
+                  <option value="7">This week</option>
+                  <option value="30">This month</option>
+                  <option value="365">This year</option>
+                  
+              </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Pie chart</h4>
+                  <canvas id="pieChart" style="height:250px"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Doughnut chart</h4>
+                  <canvas id="doughnutChart" style="height:250px"></canvas>
+                </div>
+              </div>
+            </div> --
+          </div>
+          <!-- <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Pie chart</h4>
+                  <canvas id="pieChart" style="height:250px"></canvas>
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Scatter chart</h4>
+                  <canvas id="scatterChart" style="height:250px"></canvas>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> --}}
+
+  
+
+  <!-- partial -->
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Bar chart</h4>
+                <div id="mainBar">
+                  <!-- <canvas id="doughnutChart"></canvas> -->
+                  <canvas id="barChart"></canvas>
+                </div>
+
+                <div
+                  class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+                >
+                  <h4
+                    class="mb-4 font-semibold text-gray-800 dark:text-gray-300"
+                  >
+                    Total sales
+                  </h4>
+                  <div class="container-fluid px-0 py-1 float-end mt-0">
+                    <select
+                      id="salesChange"
+                      onchange="ChartChange()"
+                      style="
+                        background: rgba(0, 0, 0, 0.3);
+                        color: #fff;
+                        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+                      "
+                      class="float-end form-select-sm ps-4 pe-5"
+                    >
+                      <option value="7" selected>This week</option>
+                      <option value="30">This Month</option>
+                      <option value="365">This Year</option>
+                    </select>
+                  </div>
+
+                  <div
+                    class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400"
+                  >
+                    <!-- Chart legend -->
+                  </div>
+                </div>
+                <!-- bars end -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Chartst</h4>
+                <!-- <canvas id="barChart"></canvas> -->
+
+             
+                <div class="grid gap-6 mb-8 md:grid-cols-2">
+                  <div
+                    class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+                  >
+                    <h4
+                      class="mb-4 font-semibold text-gray-800 dark:text-gray-300"
+                    >
+                      Order Data
+                    </h4>
+
+                    <div
+                      class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400"
+                    >
+                      <!-- Chart legend  -->
+                      
+                    </div>
+                  </div>
+                  <canvas id="doughnutChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Line chart</h4>
+                <canvas id="lineChart"></canvas>
+              </div>
+            </div>
+          </div> -->
+          
+   
+          <!-- <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Area chart</h4>
+                  <canvas id="areaChart"></canvas>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 grid-margin grid-margin-lg-0 stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Pie chart</h4>
+                <canvas id="pieChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 grid-margin grid-margin-lg-0 stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Scatter chart</h4>
+                <canvas id="scatterChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+     
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+<div class="row">
+  <div class="col-xl-3 col-md-6 half-gutter grid-margin">
+    <div class="card card-white">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h4 class="mb-0 text-blue">{{orderLength}}</h4>
+            <p class="text-muted mb-0"> Total Orders</p>
+          </div>
+          <div>
+            <i class="fas fa-shopping-cart text-blue fs-2"></i>
+          </div>
+        </div>
+        {{!-- <div class="custom-progress bg-blue progress mb-0">
+          <div
+            class="animated custom-bar progress-bar slideInLeft"
+            style="width:70%"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="10"
+            role="progressbar"
+          ></div>
+        </div> --}}
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-md-6 half-gutter grid-margin">
+    <div class="card card-white">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h4 class="mb-0 text-orange">{{pendindCount}}</h4>
+            <p class="text-muted mb-0">Pending Payment</p>
+          </div>
+          <div>
+            <i class="fas fa-clock text-orange fs-2"></i>
+          </div>
+        </div>
+        {{!-- <div class="custom-progress bg-orange progress mb-0">
+          <div
+            class="animated custom-bar progress-bar slideInLeft"
+            style="width:80%"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="10"
+            role="progressbar"
+          ></div>
+        </div> --}}
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-md-6 half-gutter grid-margin">
+    <div class="card card-white">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h4 class="mb-0 text-green">{{userLength}}</h4>
+            <p class="text-muted mb-0">Customers</p>
+          </div>
+          <div>
+            <i class="far fa-user text-green fs-2"></i>
+          </div>
+        </div>
+        {{!-- <div class="custom-progress bg-green progress mb-0">
+          <div
+            class="animated custom-bar progress-bar slideInLeft"
+            style="width:60%"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="10"
+            role="progressbar"
+          ></div>
+        </div> --}}
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-md-6 half-gutter grid-margin">
+    <div class="card card-white">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h4 class="mb-0 text-pink">₹{{totalAmount}}</h4>
+            <p class="text-muted mb-0">sales amount</p>
+          </div>
+          <div>
+            <i class="fas fa-money-bill-wave text-green fs-2"></i>
+          </div>
+        </div>
+        {{!-- <div class="custom-progress bg-pink progress mb-0">
+          <div
+            class="animated custom-bar progress-bar slideInLeft"
+            style="width:50%"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="10"
+            role="progressbar"
+          ></div>
+        </div> --}}
+      </div>
+    </div>
+  </div>
+</div>
+    {{!-- <%- include('partials/_footer.ejs') %> --}}
+    <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+  </div>
+</div>

@@ -72,7 +72,7 @@ const login = (req,res,next) =>{
 const isBlock =(req,res,next)=>{
   if(req.session.block){
     console.log("blocked");
-    req.session.destroy()
+    req.session.user=null
     res.render("users/login",{ user: true ,isBlock :"YOUR ACCOUNT HAS BEEN SUSPENDED" })
   }
   else{

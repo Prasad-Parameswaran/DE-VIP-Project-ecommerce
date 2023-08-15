@@ -1,140 +1,358 @@
-$(document).ready(function() {
-    
-    "use strict";
-    
-    // apexchart1
+$(function() {
+	/* ChartJS
+	 * -------
+	 * Data and config for chartjs
+	 */
+	'use strict';
+	var data = {
+	  labels: ["2013", "2014", "2014", "2015", "2016", "2017"],
+	  datasets: [{
+		label: '# of Votes',
+		data: [10, 19, 3, 5, 2, 3],
+		backgroundColor: [
+		  'rgba(255, 99, 132, 0.2)',
+		  'rgba(54, 162, 235, 0.2)',
+		  'rgba(255, 206, 86, 0.2)',
+		  'rgba(75, 192, 192, 0.2)',
+		  'rgba(153, 102, 255, 0.2)',
+		  'rgba(255, 159, 64, 0.2)'
+		],
+		borderColor: [
+		  'rgba(255,99,132,1)',
+		  'rgba(54, 162, 235, 1)',
+		  'rgba(255, 206, 86, 1)',
+		  'rgba(75, 192, 192, 1)',
+		  'rgba(153, 102, 255, 1)',
+		  'rgba(255, 159, 64, 1)'
+		],
+		borderWidth: 1,
+		fill: false
+	  }]
+	};
+	var multiLineData = {
+	  labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+	  datasets: [{
+		  label: 'Dataset 1',
+		  data: [12, 19, 3, 5, 2, 3],
+		  borderColor: [
+			'#587ce4'
+		  ],
+		  borderWidth: 2,
+		  fill: false
+		},
+		{
+		  label: 'Dataset 2',
+		  data: [5, 23, 7, 12, 42, 23],
+		  borderColor: [
+			'#ede190'
+		  ],
+		  borderWidth: 2,
+		  fill: false
+		},
+		{
+		  label: 'Dataset 3',
+		  data: [15, 10, 21, 32, 12, 33],
+		  borderColor: [
+			'#f44252'
+		  ],
+		  borderWidth: 2,
+		  fill: false
+		}
+	  ]
+	};
 	var options = {
-	    chart: {
-	        height: 350,
-	        type: 'area',
-	    },
-	    dataLabels: {
-	        enabled: false
-	    },
-	    stroke: {
-	        curve: 'smooth'
-	    },
-	    series: [{
-	        name: 'series1',
-	        data: [31, 40, 28, 51, 42, 109, 100]
-	    }, {
-	        name: 'series2',
-	        data: [11, 32, 45, 32, 34, 52, 41]
-	    }],
-	    xaxis: {
-	        type: 'datetime',
-	        categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],
-	    },
-	    tooltip: {
-	        x: {
-	            format: 'dd/MM/yy HH:mm'
-	        },
-	    }
+	  scales: {
+		yAxes: [{
+		  ticks: {
+			beginAtZero: true
+		  }
+		}]
+	  },
+	  legend: {
+		display: false
+	  },
+	  elements: {
+		point: {
+		  radius: 0
+		}
+	  }
+  
+	};
+	var doughnutPieData = {
+	  datasets: [{
+		data: [30, 40, 30],
+		backgroundColor: [
+		  'rgba(255, 99, 132, 0.5)',
+		  'rgba(54, 162, 235, 0.5)',
+		  'rgba(255, 206, 86, 0.5)',
+		  'rgba(75, 192, 192, 0.5)',
+		  'rgba(153, 102, 255, 0.5)',
+		  'rgba(255, 159, 64, 0.5)'
+		],
+		borderColor: [
+		  'rgba(255,99,132,1)',
+		  'rgba(54, 162, 235, 1)',
+		  'rgba(255, 206, 86, 1)',
+		  'rgba(75, 192, 192, 1)',
+		  'rgba(153, 102, 255, 1)',
+		  'rgba(255, 159, 64, 1)'
+		],
+	  }],
+  
+	  // These labels appear in the legend and in the tooltips when hovering different arcs
+	  labels: [
+		'Deliverd',
+		'Canceld',
+		'retuned',
+	  ]
+	};
+	var doughnutPieOptions = {
+	  responsive: true,
+	  animation: {
+		animateScale: true,
+		animateRotate: true
+	  }
+	};
+	var areaData = {
+	  labels: ["2013", "2014", "2015", "2016", "2017"],
+	  datasets: [{
+		label: '# of Votes',
+		data: [12, 19, 3, 5, 2, 3],
+		backgroundColor: [
+		  'rgba(255, 99, 132, 0.2)',
+		  'rgba(54, 162, 235, 0.2)',
+		  'rgba(255, 206, 86, 0.2)',
+		  'rgba(75, 192, 192, 0.2)',
+		  'rgba(153, 102, 255, 0.2)',
+		  'rgba(255, 159, 64, 0.2)'
+		],
+		borderColor: [
+		  'rgba(255,99,132,1)',
+		  'rgba(54, 162, 235, 1)',
+		  'rgba(255, 206, 86, 1)',
+		  'rgba(75, 192, 192, 1)',
+		  'rgba(153, 102, 255, 1)',
+		  'rgba(255, 159, 64, 1)'
+		],
+		borderWidth: 1,
+		fill: true, // 3: no fill
+	  }]
+	};
+  
+	var areaOptions = {
+	  plugins: {
+		filler: {
+		  propagate: true
+		}
+	  }
 	}
-	var chart = new ApexCharts(document.querySelector("#apexchart1"), options);
-	chart.render();
-
-    // apexchart2
-	var options = {
-	    series: [75],
-	      chart: {
-	        height: 200,
-	        type: "radialBar",
-	        toolbar: {
-	          show: true
-	        }
-	      },
-	    plotOptions: {
-	        radialBar: {
-	          startAngle: -135,
-	          endAngle: 225,
-	          hollow: {
-	            margin: 0,
-	            size: "70%",
-	            background: "#fff",
-	            image: undefined,
-	            position: "front",
-	            dropShadow: {
-	              enabled: true,
-	              top: 3,
-	              left: 0,
-	              blur: 4,
-	              opacity: 0.24
-	            }
-	          },
-	          track: {
-	            background: "#fff",
-	            strokeWidth: "67%",
-	            margin: 0, // margin is in pixels
-	            dropShadow: {
-	              enabled: true,
-	              top: -3,
-	              left: 0,
-	              blur: 4,
-	              opacity: 0.35
-	            }
-	          },
-
-	          dataLabels: {
-	            show: true,
-	            name: {
-	              offsetY: -10,
-	              show: true,
-	              color: "#888",
-	              fontSize: "17px"
-	            },
-	            value: {
-	              formatter: function(val) {
-	                return parseInt(val.toString(), 10).toString();
-	              },
-	              color: "#111",
-	              fontSize: "36px",
-	              show: true
-	            }
-	          }
-	        }
-	      },
-	    fill: {
-	        type: "gradient",
-	        gradient: {
-	          shade: "dark",
-	          type: "horizontal",
-	          shadeIntensity: 0.5,
-	          gradientToColors: ["#ABE5A1"],
-	          inverseColors: true,
-	          opacityFrom: 1,
-	          opacityTo: 1,
-	          stops: [0, 100]
-	        }
-	      },
-	    stroke: {
-	        lineCap: "round"
-	      },
-	      labels: ["Percent"]
-	    };
-	
-	var chart = new ApexCharts(document.querySelector("#apexchart2"), options);
-	chart.render();
-
-	// apexchart3
-	var options = {
-          series: [{
-          name: 'Series 1',
-          data: [80, 50, 30, 40, 100, 20],
-        }],
-          chart: {
-          height: 350,
-          type: 'radar',
-        },
-        title: {
-          text: 'Basic Radar Chart'
-        },
-        xaxis: {
-          categories: ['January', 'February', 'March', 'April', 'May', 'June']
-        }
-        };
-        
-	var chart = new ApexCharts(document.querySelector("#apexchart3"), options);
-	chart.render();
-
-});
+  
+	var multiAreaData = {
+	  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+	  datasets: [{
+		  label: 'Facebook',
+		  data: [8, 11, 13, 15, 12, 13, 16, 15, 13, 19, 11, 14],
+		  borderColor: ['rgba(255, 99, 132, 0.5)'],
+		  backgroundColor: ['rgba(255, 99, 132, 0.5)'],
+		  borderWidth: 1,
+		  fill: true
+		},
+		{
+		  label: 'Twitter',
+		  data: [7, 17, 12, 16, 14, 18, 16, 12, 15, 11, 13, 9],
+		  borderColor: ['rgba(54, 162, 235, 0.5)'],
+		  backgroundColor: ['rgba(54, 162, 235, 0.5)'],
+		  borderWidth: 1,
+		  fill: true
+		},
+		{
+		  label: 'Linkedin',
+		  data: [6, 14, 16, 20, 12, 18, 15, 12, 17, 19, 15, 11],
+		  borderColor: ['rgba(255, 206, 86, 0.5)'],
+		  backgroundColor: ['rgba(255, 206, 86, 0.5)'],
+		  borderWidth: 1,
+		  fill: true
+		}
+	  ]
+	};
+  
+	var multiAreaOptions = {
+	  plugins: {
+		filler: {
+		  propagate: true
+		}
+	  },
+	  elements: {
+		point: {
+		  radius: 0
+		}
+	  },
+	  scales: {
+		xAxes: [{
+		  gridLines: {
+			display: false
+		  }
+		}],
+		yAxes: [{
+		  gridLines: {
+			display: false
+		  }
+		}]
+	  }
+	}
+  
+	var scatterChartData = {
+	  datasets: [{
+		  label: 'First Dataset',
+		  data: [{
+			  x: -10,
+			  y: 0
+			},
+			{
+			  x: 0,
+			  y: 3
+			},
+			{
+			  x: -25,
+			  y: 5
+			},
+			{
+			  x: 40,
+			  y: 5
+			}
+		  ],
+		  backgroundColor: [
+			'rgba(255, 99, 132, 0.2)'
+		  ],
+		  borderColor: [
+			'rgba(255,99,132,1)'
+		  ],
+		  borderWidth: 1
+		},
+		{
+		  label: 'Second Dataset',
+		  data: [{
+			  x: 10,
+			  y: 5
+			},
+			{
+			  x: 20,
+			  y: -30
+			},
+			{
+			  x: -25,
+			  y: 15
+			},
+			{
+			  x: -10,
+			  y: 5
+			}
+		  ],
+		  backgroundColor: [
+			'rgba(54, 162, 235, 0.2)',
+		  ],
+		  borderColor: [
+			'rgba(54, 162, 235, 1)',
+		  ],
+		  borderWidth: 1
+		}
+	  ]
+	}
+	const ChartChange=()=>{
+	  console.log("mmmmmmmmm");
+	}
+	var scatterChartOptions = {
+	  scales: {
+		xAxes: [{
+		  type: 'linear',
+		  position: 'bottom'
+		}]
+	  }
+	}
+	// Get context with jQuery - using jQuery's .get() method.
+	if ($("#barChart").length) {
+	  var barChartCanvas = $("#barChart").get(0).getContext("2d");
+	  // This will get the first returned node in the jQuery collection.
+	  var barChart = new Chart(barChartCanvas, {
+		type: 'bar',
+		data: data,
+		options: options
+	  });
+	}
+  
+	if ($("#lineChart").length) {
+	  var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
+	  var lineChart = new Chart(lineChartCanvas, {
+		type: 'line',
+		data: data,
+		options: options
+	  });
+	}
+  
+	if ($("#linechart-multi").length) {
+	  var multiLineCanvas = $("#linechart-multi").get(0).getContext("2d");
+	  var lineChart = new Chart(multiLineCanvas, {
+		type: 'line',
+		data: multiLineData,
+		options: options
+	  });
+	}
+  
+	if ($("#areachart-multi").length) {
+	  var multiAreaCanvas = $("#areachart-multi").get(0).getContext("2d");
+	  var multiAreaChart = new Chart(multiAreaCanvas, {
+		type: 'line',
+		data: multiAreaData,
+		options: multiAreaOptions
+	  });
+	}
+  
+	if ($("#doughnutChart").length) {
+	  var doughnutChartCanvas = $("#doughnutChart").get(0).getContext("2d");
+	  var doughnutChart = new Chart(doughnutChartCanvas, {
+		type: 'doughnut',
+		data: doughnutPieData,
+		options: doughnutPieOptions
+	  });
+	}
+  
+	if ($("#pieChart").length) {
+	  var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+	  var pieChart = new Chart(pieChartCanvas, {
+		type: 'pie',
+		data: doughnutPieData,
+		options: doughnutPieOptions
+	  });
+	}
+  
+	if ($("#areaChart").length) {
+	  var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
+	  var areaChart = new Chart(areaChartCanvas, {
+		type: 'line',
+		data: areaData,
+		options: areaOptions
+	  });
+	}
+  
+	if ($("#scatterChart").length) {
+	  var scatterChartCanvas = $("#scatterChart").get(0).getContext("2d");
+	  var scatterChart = new Chart(scatterChartCanvas, {
+		type: 'scatter',
+		data: scatterChartData,
+		options: scatterChartOptions
+	  });
+	}
+  
+	if ($("#browserTrafficChart").length) {
+	  var doughnutChartCanvas = $("#browserTrafficChart").get(0).getContext("2d");
+	  var doughnutChart = new Chart(doughnutChartCanvas, {
+		type: 'doughnut',
+		data: browserTrafficData,
+		options: doughnutPieOptions
+	  });
+	}
+  
+   
+  });
+  
+  

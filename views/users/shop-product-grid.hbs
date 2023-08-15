@@ -1,369 +1,409 @@
-
-
-        <!-- PAGE TITLE
+<!-- PAGE TITLE
         ================================================== -->
-        <section class="page-title-section bg-img cover-background" data-background="user/img/bg/page-title.jpg">
-            <div class="container">
+<section class="page-title-section bg-img cover-background" data-background="user/img/bg/page-title.jpg">
+    <div class="container">
 
-                <div class="title-info">
-                    <h1>Shop Products</h1></div>
-                <div class="breadcrumbs-info">
-                    <ul class="ps-0">
-                        <li><a href="home-shop-1.html">Home</a></li>
-                        <li><a href="#">Shop products</a></li>
-                    </ul>
-                </div>
+        <div class="title-info">
+            <h1>Shop Products</h1>
+        </div>
+        <div class="breadcrumbs-info">
+            <ul class="ps-0">
+                <li><a href="home-shop-1.html">Home</a></li>
+                <li><a href="#">Shop products</a></li>
+            </ul>
+        </div>
 
-            </div>
-        </section>
-        
-   
-
+    </div>
+</section>
 
 
-           <section class="md">
-            <div class="container">
 
-                <div class="row g-0 align-items-center bg-light rounded p-3 mb-1-9">
 
-                            <div class="col-12 col-md my-1 my-md-0 text-center text-md-start font-weight-600">Showing 1–9 of 27 results</div>
 
-                            <div class="col-12 col-md-auto">
+<section class="md">
+    <div class="container">
 
-                                <div class="row justify-content-center">
-{{!-- 
-                                    <div class="col-auto my-1 my-md-0">
-                                        <label class="m-0">Show:</label>
-                                        <select class="w-auto d-inline-block form-select">
-                                            <option value="#?limit=24" selected="selected">24</option>
-                                            <option value="#?limit=25">25</option>
-                                            <option value="#?limit=50">50</option>
-                                            <option value="#?limit=75">75</option>
-                                            <option value="#?limit=100">100</option>
-                                        </select>
-                                    </div> --}}
+        <div class="row g-0 align-items-center bg-light rounded p-3 mb-1-9">
 
-                                    <div class="col-auto my-1 my-md-0">
-                                        <label class="m-0">Sort By:</label>
-                                        <select class="w-auto d-inline-block form-select">
-                                            <option value="#?sort=p.sort_order&amp;order=ASC">Default</option>
-                                            {{!-- <option value="#?sort=pd.name&amp;order=ASC">Name (A - Z)</option>
-                                            <option value="#?sort=pd.name&amp;order=DESC">Name (Z - A)</option> --}}
-                                            <option value="#?sort=p.price&amp;order=ASC" selected="">Price (Low &gt; High)</option>
-                                            <option value="#?sort=p.price&amp;order=DESC">Price (High &gt; Low)</option>
-                                            {{!-- <option value="#?sort=rating&amp;order=DESC">Rating (Highest)</option>
-                                            <option value="#?sort=rating&amp;order=ASC">Rating (Lowest)</option>
-                                            <option value="#?sort=p.model&amp;order=ASC">Model (A - Z)</option>
-                                            <option value="#?sort=p.model&amp;order=DESC">Model (Z - A)</option> --}}
-                                        </select>
-                                    </div>
+            <div class="col-12 col-md my-1 my-md-0 text-center text-md-start font-weight-600"></div>
+            
 
-                                </div>
-
-                            </div>
-
-                        </div>
+            <div class="col-12 col-md-auto">
+              
 
                 <div class="row justify-content-center">
-                   {{#each product}}
-                    <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
-                        <div class="product-grid">
-                            <div class="product-img">
-                              <a href="shop-product-detail/{{_id}}"><img src="images/{{imageUrl.[0].filename}}" style="height: 200px;
+           
+                    
+                    <div class="col-auto my-1 my-md-0">
+
+                           <form method="post" action="/shop">
+                    <label for="search">Search:</label>
+                    <input type="search" id="search" name="q" placeholder="Serch Products">
+                                <button type="submit" class="btn btn-danger">search</button>
+
+                </form>
+                    
+                    </div>
+                    
+                        
+                    
+
+                    <div class="col-auto my-1 my-md-0">
+                        <label class="m-0">Sort By:</label>
+                        <a href="/sort?value=1">Price low to high</a>
+                        <a class="px-5" href="/sort?value=-1">Price high to low</a>
+                    </div>
+
+                    </div>
+                   
+              
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center">
+            {{#each product}}
+            {{#if isDelete}}
+            <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
+                <div class="product-grid">
+                    <div class="product-img">
+                        <a href="shop-product-detail/{{_id}}"><img src="images/{{imageUrl.[0].filename}}" style="height: 200px;
                                             width: 200px;
-                                            object-fit: cover;"  alt="..."></a>
-                            </div>
-                            <div class="product-description">
-                                   <h3 style="display: inline-block;
+                                            object-fit: cover;" alt="..."></a>
+                    </div>
+                    <div class="product-description">
+                        <h3 style="display: inline-block;
                                         width: 180px;
                                         white-space: nowrap;
                                         overflow: hidden !important;
-                                        text-overflow: ellipsis;" ><a href="shop-product-detail.html">{{name}}</a></h3>
-                                        <h4 class="price">
-                                                        <span class="offer-price">₹{{price}}</span>
-                                                    </h4>
-                            </div>
-                            <div class="product-buttons">
-                                <ul class="ps-0">
-                                    
-                                    <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#" class="butn-style2" title="Add to Cart" onclick="addToCart('{{_id}}')">Add to Cart</a></li>
-                                    <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
+                                        text-overflow: ellipsis;"><a href="shop-product-detail.html">{{name}}</a></h3>
+                        <h4 class="price">
+                            <span class="offer-price">₹{{price}}</span>
+                        </h4>
                     </div>
-                        {{/each}}
+                    <div class="product-buttons">
+                        <ul class="ps-0">
 
-                    {{!-- <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
-                        <div class="product-grid">
-                            <div class="product-img">
-                                <a href="shop-product-detail.html"><img src="img/products/product-grid/product-02.jpg" alt="..."></a>
-                            </div>
-                            <div class="product-description">
-                                <h3><a href="shop-product-detail.html">Desktop Speakers</a></h3>
-                                <h4 class="price">
-                                                        <span class="offer-price">$29.00</span>
-                                                    </h4>
-                            </div>
-                            <div class="product-buttons">
-                                <ul class="ps-0">
-                                    <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
-                                    <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
+                            <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a>
+                            </li>
+                            <li><a href="#" class="butn-style2" title="Add to Cart" onclick="addToCart('{{_id}}')">Add
+                                    to Cart</a></li>
+                            <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a>
+                            </li>
+                        </ul>
                     </div>
-
-                    <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
-                        <div class="product-grid">
-                            <div class="product-img">
-                                <a href="shop-product-detail.html">
-                                    <div class="label-offer left-align bg-primary">New</div><img src="img/products/product-grid/product-03.jpg" alt="..."></a>
-                            </div>
-                            <div class="product-description">
-                                <h3><a href="shop-product-detail.html">Wireless Controller</a></h3>
-                                <h4 class="price">
-                                                        <span class="regular-price line-through">$57.00</span>
-                                                        <span class="offer-price">$55.00</span>
-                                                    </h4>
-                            </div>
-                            <div class="product-buttons">
-                                <ul class="ps-0">
-                                    <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
-                                    <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
-                        <div class="product-grid">
-                            <div class="product-img">
-                                <a href="shop-product-detail.html"><img src="img/products/product-grid/product-04.jpg" alt="..."></a>
-                            </div>
-                            <div class="product-description">
-                                <h3><a href="shop-product-detail.html">Wireless Headset</a></h3>
-                                <h4 class="price">
-                                                        <span class="offer-price">$28.00</span>
-                                                    </h4>
-                            </div>
-                            <div class="product-buttons">
-                                <ul class="ps-0">
-                                    <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
-                                    <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
-                        <div class="product-grid">
-                            <div class="product-img">
-                                <a href="shop-product-detail.html">
-                                    <div class="label-offer bg-red">Sale</div><img src="img/products/product-grid/product-06.jpg" alt="..."></a>
-                            </div>
-                            <div class="product-description">
-                                <h3><a href="shop-product-detail.html">Gear 360 Video Editor</a></h3>
-                                <h4 class="price">
-                                                        <span class="regular-price line-through">$99.00</span>
-                                                        <span class="offer-price">$88.00</span>
-                                                    </h4>
-                            </div>
-                            <div class="product-buttons">
-                                <ul class="ps-0">
-                                    <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
-                                    <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
-                        <div class="product-grid">
-                            <div class="product-img">
-                                <a href="shop-product-detail.html"><img src="img/products/product-grid/product-07.jpg" alt="..."></a>
-                            </div>
-                            <div class="product-description">
-                                <h3><a href="shop-product-detail.html">Standalone VR Headset</a></h3>
-                                <h4 class="price">
-                                                        <span class="offer-price">$110.00</span>
-                                                    </h4>
-                            </div>
-                            <div class="product-buttons">
-                                <ul class="ps-0">
-                                    <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
-                                    <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
-                        <div class="product-grid">
-                            <div class="product-img">
-                                <a href="shop-product-detail.html">
-                                    <div class="label-offer left-align bg-primary">New</div><img src="img/products/product-grid/product-08.jpg" alt="..."></a>
-                            </div>
-                            <div class="product-description">
-                                <h3><a href="shop-product-detail.html">USB Flash Drive</a></h3>
-                                <h4 class="price">
-                                                        <span class="regular-price line-through">$21.00</span>
-                                                        <span class="offer-price">$15.00</span>
-                                                    </h4>
-                            </div>
-                            <div class="product-buttons">
-                                <ul class="ps-0">
-                                    <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
-                                    <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
-                        <div class="product-grid">
-                            <div class="product-img">
-                                <a href="shop-product-detail.html"><img src="img/products/product-grid/product-09.jpg" alt="..."></a>
-                            </div>
-                            <div class="product-description">
-                                <h3><a href="shop-product-detail.html">Mini Bluetooth Speaker</a></h3>
-                                <h4 class="price">
-                                                        <span class="offer-price">$29.00</span>
-                                                    </h4>
-                            </div>
-                            <div class="product-buttons">
-                                <ul class="ps-0">
-                                    <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
-                                    <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
-                        <div class="product-grid">
-                            <div class="product-img">
-                                <a href="shop-product-detail.html"><img src="img/products/product-grid/product-10.jpg" alt="..."></a>
-                            </div>
-                            <div class="product-description">
-                                <h3><a href="shop-product-detail.html">Mobile Earphone</a></h3>
-                                <h4 class="price">
-                                                    <span class="offer-price">$31.00</span>
-                                                </h4>
-                            </div>
-                            <div class="product-buttons">
-                                <ul class="ps-0">
-                                    <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
-                                    <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
-                        <div class="product-grid">
-                            <div class="product-img">
-                                <a href="shop-product-detail.html">
-                                    <div class="label-offer bg-red">Sale</div><img src="img/products/product-grid/product-11.jpg" alt="..."></a>
-                            </div>
-                            <div class="product-description">
-                                <h3><a href="shop-product-detail.html">Speech Enabled Device</a></h3>
-                                <h4 class="price">
-                                                        <span class="regular-price line-through">$85.00</span>
-                                                        <span class="offer-price">$75.00</span>
-                                                    </h4>
-                            </div>
-                            <div class="product-buttons">
-                                <ul class="ps-0">
-                                    <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
-                                    <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
-                        <div class="product-grid">
-                            <div class="product-img">
-                                <a href="shop-product-detail.html"><img src="img/products/product-grid/product-12.jpg" alt="..."></a>
-                            </div>
-                            <div class="product-description">
-                                <h3><a href="shop-product-detail.html">Apple iPhone X</a></h3>
-                                <h4 class="price">
-                                                        <span class="offer-price">$1214.50</span>
-                                                    </h4>
-                            </div>
-                            <div class="product-buttons">
-                                <ul class="ps-0">
-                                    <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
-                                    <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
-                        <div class="product-grid">
-                            <div class="product-img">
-                                <a href="shop-product-detail.html">
-                                    <div class="label-offer left-align bg-primary">New</div><img src="img/products/product-grid/product-13.jpg" alt="..."></a>
-                            </div>
-                            <div class="product-description">
-                                <h3><a href="shop-product-detail.html">Plugs And Sockets</a></h3>
-                                <h4 class="price">
-                                                        <span class="regular-price line-through">$22.00</span>
-                                                        <span class="offer-price">$11.40</span>
-                                                    </h4>
-                            </div>
-                            <div class="product-buttons">
-                                <ul class="ps-0">
-                                    <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
-                                    <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-
-                <!-- pagination -->
-                <div class="pagination text-small text-uppercase text-extra-dark-gray mt-4">
-                            <ul>
-                                <li><a href="#"><i class="fas fa-long-arrow-alt-left me-1 d-none d-sm-inline-block"></i> Prev</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">Next <i class="fas fa-long-arrow-alt-right ms-1 d-none d-sm-inline-block"></i></a></li>
-                            </ul>
-                        </div>
-                <!-- end pagination --> --}}
-                  <!-- pagination -->
-                <div class="pagination text-small text-uppercase text-extra-dark-gray mt-4">
-                            <ul>
-                                <li><a href="#"><i class="fas fa-long-arrow-alt-left me-1 d-none d-sm-inline-block"></i> Prev</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">Next <i class="fas fa-long-arrow-alt-right ms-1 d-none d-sm-inline-block"></i></a></li>
-                            </ul>
-                        </div>
-                <!-- end pagination -->
-
             </div>
-        </section>
-        
+            {{/if}}
+            {{/each}}
+
+            {{!-- <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
+                <div class="product-grid">
+                    <div class="product-img">
+                        <a href="shop-product-detail.html"><img src="img/products/product-grid/product-02.jpg"
+                                alt="..."></a>
+                    </div>
+                    <div class="product-description">
+                        <h3><a href="shop-product-detail.html">Desktop Speakers</a></h3>
+                        <h4 class="price">
+                            <span class="offer-price">$29.00</span>
+                        </h4>
+                    </div>
+                    <div class="product-buttons">
+                        <ul class="ps-0">
+                            <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a>
+                            </li>
+                            <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
+                            <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
+                <div class="product-grid">
+                    <div class="product-img">
+                        <a href="shop-product-detail.html">
+                            <div class="label-offer left-align bg-primary">New</div><img
+                                src="img/products/product-grid/product-03.jpg" alt="...">
+                        </a>
+                    </div>
+                    <div class="product-description">
+                        <h3><a href="shop-product-detail.html">Wireless Controller</a></h3>
+                        <h4 class="price">
+                            <span class="regular-price line-through">$57.00</span>
+                            <span class="offer-price">$55.00</span>
+                        </h4>
+                    </div>
+                    <div class="product-buttons">
+                        <ul class="ps-0">
+                            <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a>
+                            </li>
+                            <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
+                            <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
+                <div class="product-grid">
+                    <div class="product-img">
+                        <a href="shop-product-detail.html"><img src="img/products/product-grid/product-04.jpg"
+                                alt="..."></a>
+                    </div>
+                    <div class="product-description">
+                        <h3><a href="shop-product-detail.html">Wireless Headset</a></h3>
+                        <h4 class="price">
+                            <span class="offer-price">$28.00</span>
+                        </h4>
+                    </div>
+                    <div class="product-buttons">
+                        <ul class="ps-0">
+                            <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a>
+                            </li>
+                            <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
+                            <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
+                <div class="product-grid">
+                    <div class="product-img">
+                        <a href="shop-product-detail.html">
+                            <div class="label-offer bg-red">Sale</div><img
+                                src="img/products/product-grid/product-06.jpg" alt="...">
+                        </a>
+                    </div>
+                    <div class="product-description">
+                        <h3><a href="shop-product-detail.html">Gear 360 Video Editor</a></h3>
+                        <h4 class="price">
+                            <span class="regular-price line-through">$99.00</span>
+                            <span class="offer-price">$88.00</span>
+                        </h4>
+                    </div>
+                    <div class="product-buttons">
+                        <ul class="ps-0">
+                            <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a>
+                            </li>
+                            <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
+                            <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
+                <div class="product-grid">
+                    <div class="product-img">
+                        <a href="shop-product-detail.html"><img src="img/products/product-grid/product-07.jpg"
+                                alt="..."></a>
+                    </div>
+                    <div class="product-description">
+                        <h3><a href="shop-product-detail.html">Standalone VR Headset</a></h3>
+                        <h4 class="price">
+                            <span class="offer-price">$110.00</span>
+                        </h4>
+                    </div>
+                    <div class="product-buttons">
+                        <ul class="ps-0">
+                            <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a>
+                            </li>
+                            <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
+                            <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
+                <div class="product-grid">
+                    <div class="product-img">
+                        <a href="shop-product-detail.html">
+                            <div class="label-offer left-align bg-primary">New</div><img
+                                src="img/products/product-grid/product-08.jpg" alt="...">
+                        </a>
+                    </div>
+                    <div class="product-description">
+                        <h3><a href="shop-product-detail.html">USB Flash Drive</a></h3>
+                        <h4 class="price">
+                            <span class="regular-price line-through">$21.00</span>
+                            <span class="offer-price">$15.00</span>
+                        </h4>
+                    </div>
+                    <div class="product-buttons">
+                        <ul class="ps-0">
+                            <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a>
+                            </li>
+                            <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
+                            <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
+                <div class="product-grid">
+                    <div class="product-img">
+                        <a href="shop-product-detail.html"><img src="img/products/product-grid/product-09.jpg"
+                                alt="..."></a>
+                    </div>
+                    <div class="product-description">
+                        <h3><a href="shop-product-detail.html">Mini Bluetooth Speaker</a></h3>
+                        <h4 class="price">
+                            <span class="offer-price">$29.00</span>
+                        </h4>
+                    </div>
+                    <div class="product-buttons">
+                        <ul class="ps-0">
+                            <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a>
+                            </li>
+                            <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
+                            <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
+                <div class="product-grid">
+                    <div class="product-img">
+                        <a href="shop-product-detail.html"><img src="img/products/product-grid/product-10.jpg"
+                                alt="..."></a>
+                    </div>
+                    <div class="product-description">
+                        <h3><a href="shop-product-detail.html">Mobile Earphone</a></h3>
+                        <h4 class="price">
+                            <span class="offer-price">$31.00</span>
+                        </h4>
+                    </div>
+                    <div class="product-buttons">
+                        <ul class="ps-0">
+                            <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a>
+                            </li>
+                            <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
+                            <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
+                <div class="product-grid">
+                    <div class="product-img">
+                        <a href="shop-product-detail.html">
+                            <div class="label-offer bg-red">Sale</div><img
+                                src="img/products/product-grid/product-11.jpg" alt="...">
+                        </a>
+                    </div>
+                    <div class="product-description">
+                        <h3><a href="shop-product-detail.html">Speech Enabled Device</a></h3>
+                        <h4 class="price">
+                            <span class="regular-price line-through">$85.00</span>
+                            <span class="offer-price">$75.00</span>
+                        </h4>
+                    </div>
+                    <div class="product-buttons">
+                        <ul class="ps-0">
+                            <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a>
+                            </li>
+                            <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
+                            <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
+                <div class="product-grid">
+                    <div class="product-img">
+                        <a href="shop-product-detail.html"><img src="img/products/product-grid/product-12.jpg"
+                                alt="..."></a>
+                    </div>
+                    <div class="product-description">
+                        <h3><a href="shop-product-detail.html">Apple iPhone X</a></h3>
+                        <h4 class="price">
+                            <span class="offer-price">$1214.50</span>
+                        </h4>
+                    </div>
+                    <div class="product-buttons">
+                        <ul class="ps-0">
+                            <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a>
+                            </li>
+                            <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
+                            <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-11 col-sm-6 col-lg-4 col-xl-3 mb-1-9">
+                <div class="product-grid">
+                    <div class="product-img">
+                        <a href="shop-product-detail.html">
+                            <div class="label-offer left-align bg-primary">New</div><img
+                                src="img/products/product-grid/product-13.jpg" alt="...">
+                        </a>
+                    </div>
+                    <div class="product-description">
+                        <h3><a href="shop-product-detail.html">Plugs And Sockets</a></h3>
+                        <h4 class="price">
+                            <span class="regular-price line-through">$22.00</span>
+                            <span class="offer-price">$11.40</span>
+                        </h4>
+                    </div>
+                    <div class="product-buttons">
+                        <ul class="ps-0">
+                            <li><a href="#" class="btn-link" title="Add To Wishlist"><i class="far fa-heart"></i></a>
+                            </li>
+                            <li><a href="#" class="butn-style2" title="Add to Cart">Add to Cart</a></li>
+                            <li><a href="#" class="btn-link" title="Add To Compare"><i class="fas fa-random"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- pagination -->
+        <div class="pagination text-small text-uppercase text-extra-dark-gray mt-4">
+            <ul>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-left me-1 d-none d-sm-inline-block"></i> Prev</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">Next <i class="fas fa-long-arrow-alt-right ms-1 d-none d-sm-inline-block"></i></a></li>
+            </ul>
+        </div>
+        <!-- end pagination --> --}}
+        <!-- pagination -->
+        <div class="pagination text-small text-uppercase text-extra-dark-gray mt-4">
+            <ul>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-left me-1 d-none d-sm-inline-block"></i> Prev</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">Next <i class="fas fa-long-arrow-alt-right ms-1 d-none d-sm-inline-block"></i></a></li>
+            </ul>
+        </div>
+        <!-- end pagination -->
+
+    </div>
+</section>
+
 <script>
     function addToCart(id) {
 

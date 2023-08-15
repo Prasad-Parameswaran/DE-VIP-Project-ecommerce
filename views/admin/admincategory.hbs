@@ -18,6 +18,16 @@
 
                                     <div class="col-12 col-sm-auto">
                                        <a href="/admin/addCategory"> <button class="btn btn-warning">Add category</button></a>
+                                                                      <div class="col-auto my-1 my-md-0">
+
+                           <form method="post" action="/admin/cateSearch">
+                    <label for="search">Search:</label>
+                    <input type="search" id="search" name="q" placeholder="Search Category">
+                                <button type="submit" class="btn btn-danger">search</button>
+
+                </form>
+                    
+                    </div>
                                         {{!-- <div class="row justify-content-center">
 
                                             <div class="col-auto my-1 my-md-0">

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>nnoolmart</title>
+        <title>DE-VIP</title>
         <link rel="icon" type="image/png" href="img/logos/favicon.ico" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link href="#" rel="stylesheet" />
@@ -74,7 +74,7 @@
                     <span class="mobile-text">Enter the code we just sent on your mobile phone<b class="text-danger">{{phone}}</b></span>
                     <div class="d-flex flex-row mt-5">
                         <input type="text" name="otp" class="form-control" autofocus />
-                        <input type="submit" style="background-color: rgb(36, 125, 198);color: white;" class="form-control">
+                        <input type="submit" id="submit" style="display:block; background-color: rgb(36, 125, 198);color: white;" class="form-control">
                     </div>
                     {{#if otpErr.length}}
                     <div class="alert text-center" id="alert" role="alert" style="color: red;">
@@ -82,12 +82,27 @@
                     </div>
                     {{/if}}
                     <div class="text-center font-weight-bold justify-content-center" id="countdown"></div>
-                    <div class="form-group text-center mt-0" id="resend">
-                        <span class="d-block mobile-text">Don't receive the code?</span>
-                        <a class="font-weight-bold text-danger cursor" href="/resendotp">Resend</a>
+                    <div class="form-group text-center mt-0" >
+                        {{!-- <span class="d-block mobile-text">Don't receive the code?</span> --}}
+                        <a class="font-weight-bold text-danger cursor" id="resend" style="display:none;" href="/resendotp">Resend</a>
                     </div>
                 </div>
             </div>
         </form>
+<script>
+		var timeleft =30;
+var downloadTimer = setInterval(function(){
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+    document.getElementById("resend").style.display = "block"
+    document.getElementById("submit").style.display = "none"
+    document.getElementById("countdown").innerHTML ="click Here to Resend your Otp "
+  } else {
+    document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+    document.getElementById("submit").style.display = "block"
 
+  }
+  timeleft -= 1;
+}, 1000);
+          </script>
         

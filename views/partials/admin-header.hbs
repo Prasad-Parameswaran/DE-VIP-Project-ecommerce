@@ -1,6 +1,6 @@
  
         <div class="page-sidebar">
-            <a class="logo-box" href="index.html">
+            <a class="logo-box" href="/admin/adminhome">
                 <img src="/user/img/logos/logo-footer.png" alt="...">
                 <i class="icon-radio_button_unchecked" id="fixed-sidebar-toggle-button"></i>
                 <i class="icon-close" id="sidebar-toggle-button-close"></i>
@@ -13,7 +13,7 @@
                         </li>
                         <li>
                             <a href="/admin/category">
-                                <i class="menu-icon icon-inbox"></i><span>Category</span><i class="accordion-icon "></i>
+                                <i class="fas fa-tags me-3"></i><span>Category</span><i class="accordion-icon "></i>
                             </a>
                             {{!-- <ul>
                                 <li><a href="category.html">Category</a></li>
@@ -22,7 +22,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="menu-icon icon-layers"></i><span>Products</span><i class="accordion-icon "></i>
+                                <i class="fas fa-cube me-3"></i><span>Products</span><i class="accordion-icon "></i>
                             </a>
                             <ul>
                                 <li><a href="/admin/products">Products</a></li>
@@ -33,7 +33,7 @@
                         </li>
                         <li>
                             <a href="/admin/order">
-                                <i class="menu-icon icon-flash_on"></i><span>Orders</span><i class="accordion-icon "></i>
+                                <i class="fas fa-receipt me-3"></i><span>Orders</span><i class="accordion-icon "></i>
                             </a>
                             {{!-- <ul>
                                 <li><a href="orders.html">Orders</a></li>
@@ -41,11 +41,11 @@
                             </ul> --}}
                         </li>
                         <li>
-                            <a href="/admin/customers"> <i class="menu-icon icon-code"></i><span>Customers</span> </a>
+                            <a href="/admin/customers"> <i class="fas fa-user me-3"></i><span>Customers</span> </a>
                         </li>
                         <li>
                             <a href="/admin/coupon">
-                                <i class="menu-icon icon-format_list_bulleted"></i><span>Coupons</span><i class="accordion-icon "></i>
+                                <i class="fas fa-percent me-3"></i><span>Coupons</span><i class="accordion-icon "></i>
                             </a>
                             {{!-- <ul>
                                 <li><a href="coupons.html">Coupons</a></li>
@@ -58,6 +58,18 @@
                             </a>
                            
                         </li>
+                        <li> <a href="/admin/salesReport">
+                                <i class="fas fa-shopping-cart me-3"></i><span>Sales Report</span><i class="accordion-icon "></i>
+                            </a>
+                           </li>
+                            <li> <a href="/admin/cancelReport">
+                                <i class="fas fa-times me-3"></i><span>Cancel Report</span><i class="accordion-icon "></i>
+                            </a>
+                           </li>
+                            <li> <a href="/admin/stockReport">
+                                <i class="fas fa-box me-3"></i><span>Stock Report</span><i class="accordion-icon "></i>
+                            </a>
+                           </li>
                         <li class="menu-divider"></li>
                         <li>
                             <a href="#"> <i class="menu-icon icon-public"></i><span>Logout</span> </a>
@@ -85,9 +97,9 @@
                     </form>
                 </div>
                 <nav class="navbar navbar-default">
-                    <div class="container-fluid">
+                    <div class="container-fluid" style="display: flex; justify-content: center; align-items: center; padding-right: 40px;">
                         <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
+                        <div class="navbar-header" >
                             <div class="logo-sm">
                                 <a href="#" id="sidebar-toggle-button"><i class="fa fa-bars"></i></a>
                                 <a class="logo-box" href="index.html"><img src="/img/logos/logo.png" class="logo" alt="..."></a>
@@ -95,7 +107,14 @@
                             <button type="button" class="navbar-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                 <i class="fa fa-angle-down"></i>
                             </button>
+
                         </div>
+              <div style="display: flex; justify-content: center; align-items: center; ">
+                <h5>DE-VIP LMTD</h5>
+              </div>
+    
+
+                       
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
 
@@ -155,7 +174,10 @@
                             </ul>
                         </div> --}}
                         <!-- /.navbar-collapse -->
+                       
                     </div>
+                    
                     <!-- /.container-fluid -->
                 </nav>
             </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">

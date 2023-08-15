@@ -8,11 +8,27 @@
       <ul class="ps-0">
         <li><a href="home-shop-1.html">Home</a></li>
         <li><a href="#">Order List</a></li>
+            {{!-- <div class="d-flex justify-content-end"></div>
+             <button  onclick="printInvoice()" class="btn btn-dark">Print Invoice</button>
+             </div> --}}
       </ul>
-    </div>
+   </div>  
 
   </div>
-  <section>
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            {{!-- <section id="invoice-content">
+                <!-- ... Your invoice content ... -->
+            </section> --}}
+            <div class="text-end">
+                <button onclick="printInvoice()" class="btn btn-dark">Print Invoice</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <section id="invoice-content">
 
     <div class="container">
       <div class="card card-flush py-4 flex-row-fluid position-relative">
@@ -57,7 +73,7 @@
                   {{#each order.products}}
                   <tr>
                     <th>
-                      {{_id}}
+                      {{product.name}}
                     </th>
                     <td>
                     {{product.brand}}
@@ -75,12 +91,26 @@
         </div>
     </div>
 
-  </section>
-  <section>
+  {{!-- </section>
+  <section> --}}
     <div class="container">
       <div class="col-lg-4 float-end"> 
         <table class="table classic">
           <tbody>
+              <tr>
+               <th>Total amount :</th>
+             <td class="text-lg text-gray-dark">
+                <span id="grandTotalAmount">₹ {{orderTotal}}</span>
+                <input type="text" hidden>
+              </td> 
+            </tr>
+            <tr>
+               <th>Discount :</th>
+             <td class="text-lg text-gray-dark">
+                <span id="grandTotalAmount">₹ {{discount}}</span>
+                <input type="text" hidden>
+              </td> 
+            </tr>
             <tr>
               <th>Gross Total:</th>
               <td class="text-lg text-gray-dark">
@@ -92,6 +122,7 @@
         </table>
       </div>
     </div>
+  
   {{#unlessEqual order.orderstatus "Order Canceled"}}
  {{#unlessEqual order.orderstatus "Order Canceled"}}
    {{#unlessEqual order.orderstatus "Order Return"}}
@@ -112,6 +143,19 @@
 
 
   </section>
+
+<script>
+  function printInvoice() {
+    var invoiceContent = document.getElementById('invoice-content');
+    var originalContent = document.body.innerHTML;
+
+    document.body.innerHTML = invoiceContent.innerHTML;
+    window.print();
+    document.body.innerHTML = originalContent;
+}
+
+</script>
+
 
 <script>
 function orderCancel(id) {

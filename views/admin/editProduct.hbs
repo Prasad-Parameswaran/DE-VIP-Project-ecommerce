@@ -1,278 +1,293 @@
-
-            <!-- PAGE INNER
+<!-- PAGE INNER
             ================================================== -->
-            <div class="page-inner">
+<div class="page-inner">
 
-                <!-- PAGE MAIN WRAPPER
+    <!-- PAGE MAIN WRAPPER
                 ================================================== -->
-                <div id="main-wrapper">
-                    <!-- row -->
-                    <div class="row g-xl-3">
-                        <div class="col-xl-8 grid-margin">
+    <div id="main-wrapper">
+        <!-- row -->
+        <div class="row g-xl-3">
+            <div class="col-xl-8 grid-margin">
 
 
-{{!-- 
+                {{!--
 
 
-                               <div class="card card-white mb-3">
-                                <div class="card-heading clearfix">
-                                    <h4 class="card-title">Image</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="col-md-12 g-xl-4">
-                                        <img
-                                        src="/images/{{product.imageUrl.[0].filename}}"
-                                        alt=""
-                                        style="width: 70px; height: 100px;object-fit: cover;"
-                                        id="imageView"
-                                      />
-                                      <img
-                                      src="/images/{{product.imageUrl.[1].filename}}"
-                                      alt=""
-                                      style="width: 70px; height: 100px;object-fit: cover;"
-                                      id="imageView"
-                                    />
-                                    <img
-                                    src="/images/{{product.imageUrl.[2].filename}}"
-                                    alt=""
-                                    style="width: 70px; height: 100px;object-fit: cover;"
-                                    id="imageView"
-                                  />
-                                     
-                                    </div>
-                                
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div>
-                                                <input class="form-control form-control-lg" name="imageUrl" id="formFileLg" type="file">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        
-                                        <div class="col-md-12">
-                                          
-                                            <div>
-                                                <input class="form-control form-control-lg"  name="imageUrl" id="formFileLg"  type="file">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div>
-                                                <input class="form-control form-control-lg" name="imageUrl" id="formFileLg" type="file">
-                                            </div>
-                                        </div>
-                                    </div>
+                <div class="card card-white mb-3">
+                    <div class="card-heading clearfix">
+                        <h4 class="card-title">Image</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-md-12 g-xl-4">
+                            <img src="/images/{{product.imageUrl.[0].filename}}" alt=""
+                                style="width: 70px; height: 100px;object-fit: cover;" id="imageView" />
+                            <img src="/images/{{product.imageUrl.[1].filename}}" alt=""
+                                style="width: 70px; height: 100px;object-fit: cover;" id="imageView" />
+                            <img src="/images/{{product.imageUrl.[2].filename}}" alt=""
+                                style="width: 70px; height: 100px;object-fit: cover;" id="imageView" />
 
-                                </div>
-                            </div> --}}
+                        </div>
 
-
-
-
-                            <div class="card card-white mb-3">
-                                <div class="card-heading clearfix">
-                                    <h4 class="card-title">Product information</h4>
-                                </div>
-                                <div class="card-body">
-
-                                <form class="needs-validation" method="post" enctype="multipart/form-data"   action="/admin/editProducts/{{product._id}}" novalidate >
-                                      
-                                        <div class="row">
-                                            
-                                            <div class="col-md-12 mb-3">
-                                                <label for="validationCustom01">Product Name</label>
-                                                <input type="text" class="form-control" id="validationCustom01" value="{{product.name}}" placeholder="product name" name="name" required>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="validationCustom02">Brand Name</label>
-                                                <input type="text" class="form-control" id="validationCustom02" value="{{product.brand}}" placeholder="Brand Name" name="brand" required>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="validationCustom03">stock</label>
-                                                <input type="number" class="form-control" id="validationCustom03" value="{{product.stock}}" placeholder="Quantity" name="stock" required>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="validationCustom04">Price</label>
-                                                <input type="number" class="form-control" id="validationCustom04" value="{{product.price}}" placeholder="Price" name="Price" required>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                          
-                                           
-                                             <div class="col-md-6 mb-3">
-                                                {{!-- <label for="validationCustom04">category</label>
-                                                <input type="text" class="form-control" id="validationCustom04" placeholder="Price" name="category" required> --}}
-                                               
-                                         <label for="validationCustom06">categories</label>
-                                         <select class="form-select form-control" id="validationCustom06" name="category"   aria-label="Default select example">
-                                              {{#each categories}}
-                                              {{log category "11111111111111111111111111111111111111111111111"}}
-                                            {{!-- <option selected>choose category</option> --}}
-                                            <option value={{categoryName}}>{{categoryName}}</option>
-                                             {{/each}}
-                                         </select>
-                                          
-                                            </div>
-                                            
-                                            
-                                            <div class="form-group">
-                                               <label for="exampleFormControlTextarea1" >Discription</label>
-                                              <textarea class="form-control" id="exampleFormControlTextarea1" value=""name="description" rows="3">{{product.description}}</textarea>
-                                            </div>
-                                            
-                                          {{!-- </div> --}}
-                                            {{!-- <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="col-form-label">Wysiwyg</label>
-                                                    <div id="editor">
-                                                        <p>Hello World!</p>
-                                                        <p>Some initial <strong>bold</strong> text</p>
-                                                        <p><br></p>
-                                                    </div>
-                                                </div>
-                                           </div> --}}
-                                        </div> 
-                                        
-                                        
-                                <div class="card card-white mb-3">
-                                        <div class="card-heading clearfix">
-                                             <h4 class="card-title">image</h4>
-                                        </div>
-                                 <div class="card-body">
-                                        <div class="row">
-                                             <div class="col-md-12">
-                                                 <div>
-                                                    <input class="form-control form-control-lg" id="formFileLg" name="image" type="file" multiple />
-                                                </div>
-                                             </div>
-                                        </div>
-
-                                  </div>
-                               </div>
-
-                                  <div class="container">
-                                     <div class="text-center">
-                                         <button type="submit" class="btn btn-primary">save</button>
-                                     </div>
-                                  </div>  
-                          </form>
-
-                      </div>
-                 </div>
-                           
-                            {{!-- <div class="card card-white">
-                                <div class="card-heading clearfix">
-                                    <h4 class="card-title">Variants</h4>
-                                </div>
-                                <div class="card-body">
-
-                                    <form>
-                                        <label for="validationCustom06">options</label>
-                                        <select class="form-select form-control" id="validationCustom06" aria-label="Default select example">
-                                            <option selected>Title</option>
-                                            <option value="1">Color</option>
-                                            <option value="2">Material</option>
-                                            <option value="3">Style</option>
-                                        </select>
-                                    </form>
-
-                                </div>
-                            </div> --}}
-                        {{!-- </div> --}}
-                        {{!-- <div class="col-xl-4 grid-margin">
-                            <div class="card card-white mb-3">
-                                <div class="card-heading clearfix">
-                                    <h4 class="card-title">Pricing</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="border-bottom pb-4 mb-4">
-                                        <form class="mb-4">
-                                            <label for="validationCustom07">Price</label>
-                                            <input type="text" class="form-control" id="validationCustom07" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </form>
-                                        <div class="mb-2">
-                                            <a class="d-inline-block" href="#">
-                                                <i class="fas fa-star text-warning me-1"></i> Set "Compare to" price
-                                            </a>
-                                        </div>
-                                        <a class="d-inline-block" href="#">
-                                            <i class="fas fa-star text-warning me-1"></i> Bulk discount pricing
-                                        </a>
-                                    </div>
-                                    <form>
-                                        <div>
-                                            <span class="settings-option">Availability </span>
-                                            <input type="checkbox" class="js-switch" checked />
-                                        </div>
-                                    </form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div>
+                                    <input class="form-control form-control-lg" name="imageUrl" id="formFileLg"
+                                        type="file">
                                 </div>
                             </div>
-                            <div class="card card-white">
-                                <div class="card-heading clearfix">
-                                    <h4 class="card-title">Organization</h4>
-                                </div>
-                                <div class="card-body">
-                                    <form class="needs-validation" novalidate>
-                                        <div class="row">
-                                            <div class="col-md-12 mb-4">
-                                                <label for="validationCustom08">Vendor</label>
-                                                <input type="text" class="form-control" id="validationCustom08" placeholder="Adidas" value="Adidas" required>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 mb-4">
-                                                <label for="validationCustom09">Category</label>
-                                                <select class="form-select form-control" id="validationCustom09" aria-label="Default select example">
-                                                    <option selected>Clothing</option>
-                                                    <option value="1">Shoes</option>
-                                                    <option value="2">Electronics</option>
-                                                    <option value="3">Furniture</option>
-                                                    <option value="4">Others</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-12 mb-4">
-                                                <label for="validationCustom10">Collections</label>
-                                                <select class="form-select form-control" id="validationCustom10" aria-label="Default select example">
-                                                    <option selected>Summer</option>
-                                                    <option value="1">Winter</option>
-                                                    <option value="2">Spring</option>
-                                                    <option value="3">Autumn</option>
-                                                </select>
-                                                <small class="form-text text-muted">
-                                                    Add this product to a collection so it’s easy to find in your store.
-                                                </small>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 col-form-label">Tags</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" value="White,Black,Yellow,Red" data-role="tagsinput" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <div>
+                                    <input class="form-control form-control-lg" name="imageUrl" id="formFileLg"
+                                        type="file">
                                 </div>
                             </div>
-                        </div> --}}
-                    {{!-- </div> --}}
-                    <!-- end row -->
-             {{!-- </div> --}}
-         {{!-- </div> --}}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div>
+                                    <input class="form-control form-control-lg" name="imageUrl" id="formFileLg"
+                                        type="file">
+                                </div>
+                            </div>
+                        </div>
 
+                    </div>
+                </div> --}}
+
+
+
+
+                <div class="card card-white mb-3">
+                    <div class="card-heading clearfix">
+                        <h4 class="card-title">Product information</h4>
+                    </div>
+                    <div class="card-body">
+
+                        <form class="needs-validation" method="post" enctype="multipart/form-data"
+                            action="/admin/editProducts/{{product._id}}" novalidate>
+
+                            <div class="row">
+
+                                <div class="col-md-12 mb-3">
+                                    <label for="validationCustom01">Product Name</label>
+                                    <input type="text" class="form-control" id="validationCustom01"
+                                        value="{{product.name}}" placeholder="product name" name="name" required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom02">Brand Name</label>
+                                    <input type="text" class="form-control" id="validationCustom02"
+                                        value="{{product.brand}}" placeholder="Brand Name" name="brand" required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom03">stock</label>
+                                    <input type="number" class="form-control" id="validationCustom03"
+                                        value="{{product.stock}}" placeholder="Quantity" name="stock" required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom04">Price</label>
+                                    <input type="number" class="form-control" id="validationCustom04"
+                                        value="{{product.price}}" placeholder="Price" name="Price" required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6 mb-3">
+                                    {{!-- <label for="validationCustom04">category</label>
+                                    <input type="text" class="form-control" id="validationCustom04" placeholder="Price"
+                                        name="category" required> --}}
+
+                                    <label for="validationCustom06">categories</label>
+                                    <select class="form-select form-control" id="validationCustom06" name="category"
+                                        aria-label="Default select example">
+                                        {{#each categories}}
+                                        {{log category "11111111111111111111111111111111111111111111111"}}
+                                        {{!-- <option selected>choose category</option> --}}
+                                        <option value={{categoryName}}>{{categoryName}}</option>
+                                        {{/each}}
+                                    </select>
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Discription</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" value=""
+                                        name="description" rows="3">{{product.description}}</textarea>
+                                </div>
+
+                                {{!--
+                            </div> --}}
+                            {{!-- <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-form-label">Wysiwyg</label>
+                                    <div id="editor">
+                                        <p>Hello World!</p>
+                                        <p>Some initial <strong>bold</strong> text</p>
+                                        <p><br></p>
+                                    </div>
+                                </div>
+                            </div> --}}
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        {{#each product.imageUrl}}
+                        <div class="d-flex flex-column justify-content-center align-items-center"
+                            style="margin-right: 20px;">
+                            <img src="/images/{{filename}}" style="height: 80px; " width="60" height="50" alt="...">
+                          {{!-- <button class="btn btn-outline-danger" onclick="">Delete</button> --}}
+
+                        </div>
+                        {{/each}}
+                    </div>
+                    <div class="card card-white mb-3">
+                        <div class="card-heading clearfix">
+                            <h4 class="card-title">image</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div>
+                                        <input class="form-control form-control-lg" id="formFileLg" name="image"
+                                            type="file" multiple />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">save</button>
+                        </div>
+                    </div>
+                    </form>
+
+                </div>
+            </div>
+
+            {{!-- <div class="card card-white">
+                <div class="card-heading clearfix">
+                    <h4 class="card-title">Variants</h4>
+                </div>
+                <div class="card-body">
+
+                    <form>
+                        <label for="validationCustom06">options</label>
+                        <select class="form-select form-control" id="validationCustom06"
+                            aria-label="Default select example">
+                            <option selected>Title</option>
+                            <option value="1">Color</option>
+                            <option value="2">Material</option>
+                            <option value="3">Style</option>
+                        </select>
+                    </form>
+
+                </div>
+            </div> --}}
+            {{!--
+        </div> --}}
+        {{!-- <div class="col-xl-4 grid-margin">
+            <div class="card card-white mb-3">
+                <div class="card-heading clearfix">
+                    <h4 class="card-title">Pricing</h4>
+                </div>
+                <div class="card-body">
+                    <div class="border-bottom pb-4 mb-4">
+                        <form class="mb-4">
+                            <label for="validationCustom07">Price</label>
+                            <input type="text" class="form-control" id="validationCustom07" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </form>
+                        <div class="mb-2">
+                            <a class="d-inline-block" href="#">
+                                <i class="fas fa-star text-warning me-1"></i> Set "Compare to" price
+                            </a>
+                        </div>
+                        <a class="d-inline-block" href="#">
+                            <i class="fas fa-star text-warning me-1"></i> Bulk discount pricing
+                        </a>
+                    </div>
+                    <form>
+                        <div>
+                            <span class="settings-option">Availability </span>
+                            <input type="checkbox" class="js-switch" checked />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card card-white">
+                <div class="card-heading clearfix">
+                    <h4 class="card-title">Organization</h4>
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="validationCustom08">Vendor</label>
+                                <input type="text" class="form-control" id="validationCustom08" placeholder="Adidas"
+                                    value="Adidas" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                <label for="validationCustom09">Category</label>
+                                <select class="form-select form-control" id="validationCustom09"
+                                    aria-label="Default select example">
+                                    <option selected>Clothing</option>
+                                    <option value="1">Shoes</option>
+                                    <option value="2">Electronics</option>
+                                    <option value="3">Furniture</option>
+                                    <option value="4">Others</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                <label for="validationCustom10">Collections</label>
+                                <select class="form-select form-control" id="validationCustom10"
+                                    aria-label="Default select example">
+                                    <option selected>Summer</option>
+                                    <option value="1">Winter</option>
+                                    <option value="2">Spring</option>
+                                    <option value="3">Autumn</option>
+                                </select>
+                                <small class="form-text text-muted">
+                                    Add this product to a collection so it’s easy to find in your store.
+                                </small>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-form-label">Tags</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" value="White,Black,Yellow,Red" data-role="tagsinput"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> --}}
+        {{!--
+    </div> --}}
+    <!-- end row -->
+    {{!--
+</div> --}}
+{{!-- </div> --}}

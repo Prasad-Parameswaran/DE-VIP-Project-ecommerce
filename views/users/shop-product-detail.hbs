@@ -28,24 +28,24 @@
 
                 <!-- product left start -->
                 <div class="xzoom-container">
-
-                    <img class="xzoom5 mb-1-9" id="xzoom-magnific" src="/images/{{product.imageUrl.[0].filename}}"
+  {{!-- id="xzoom-magnific" --}}
+                    <img class="xzoom5 mb-1-9"  id="changeImg" src="/images/{{product.imageUrl.[0].filename}}"
                         style="height: 500px;
                                             width: 1000px;
                                             object-fit: cover;" xoriginal="/images/{{product.imageUrl.[0].filename}}"
                         alt="..." />
-                     <div style="display: flex; flex-direction: row;">
-    {{#each product.imageUrl}}
-        <div class="xzoom-thumbs no-margin" style="display: flex; flex-direction: row;">
-            {{!-- <a href="/user/img/products/single-product/original/01_product.jpg"> --}}
-                <img class="xzoom-gallery5" width="80" src="/images/{{filename}}" style="height: 140px;
+                    <div style="display: flex; flex-direction: row;">
+                        {{#each product.imageUrl}}
+                        <div class="xzoom-thumbs no-margin" style="display: flex; flex-direction: row;">
+                            {{!-- <a href="/user/img/products/single-product/original/01_product.jpg"> --}}
+                                <img class="xzoom-gallery5" onclick="changeImg('{{filename}}')" width="80" src="/images/{{filename}}"  style="height: 140px;
                                             width: 120px;
-                                            object-fit: cover;" xoriginal="/images/{{filename}}" xpreview="/images/{{filename}}" title="The description goes here">
-            </a>
-        </div> 
-    {{/each}}
-</div>
-
+                                            object-fit: cover;" xoriginal="/images/{{filename}}"
+                                    xpreview="/images/{{filename}}" title="The description goes here">
+                            </a>
+                        </div>
+                        {{/each}}
+                    </div>
                 </div>
                 <!-- product left end -->
             </div>
@@ -566,5 +566,11 @@
                 }
             }
         })
+    }
+</script>
+<script>
+    function changeImg(imageUrl){
+        console.log(imageUrl)
+      document.getElementById("changeImg").src =`/images/${imageUrl}`
     }
 </script>

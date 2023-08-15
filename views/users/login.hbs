@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="row">
-                            <h6 id="message" style="color: brown;"></h6>
+                            <p id="message" style="color: brown;"></p>
 
                             <div class="col-sm-6">
                                 <label class="form-check-label" for="login-remember">Don't have an account ?<a
@@ -97,12 +97,39 @@
 
 <script>
     function login() {
-        console.log("hiii5555")
+        
         const email = document.getElementById('email').value
         const password = document.getElementById('password').value
-        if (email == "" || password == "") {
-            document.getElementById('message').innerHTML = 'Please Fill!'
-        } else {
+        console.log(password)
+        var reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var passerror = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/
+
+             if (email === "") {
+         const x =  document.getElementById('message')
+           x.innerHTML = 'Please enter your email id!'
+              setTimeout(function(){ x.innerHTML= "" }, 3000)
+            return false;
+        }
+          if (reg.test(email) === false) {
+             const x =  document.getElementById('message')
+           x.innerHTML = 'invalid email!'
+              setTimeout(function(){ x.innerHTML= "" }, 3000)
+            return false;
+        }
+              if (password === "") {
+         const x =  document.getElementById('message')
+           x.innerHTML = 'Please enter your pasword!'
+              setTimeout(function(){ x.innerHTML= "" }, 3000)
+            return false;
+        }
+          if (passerror.test(password) === false) {
+              const x =  document.getElementById('message')
+           x.innerHTML ='Password must contain 8 characters, at least one special character, and at least one uppercase letter'
+          setTimeout(function(){ x.innerHTML= "" }, 3000)
+            return false;
+        }
+           
+         else {
             document.getElementById('message').innerHTML = ''
 
             $.ajax({
@@ -114,8 +141,26 @@
                 },
                 success: (response) => {
                     if (response === "sucess") {
-                     
+
+                         console.log("aprove", response)
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'bottom-left',
+                            showConfirmButton: false,
+                            timer: 1000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        }) 
+
+                         Toast.fire({
+                            icon: 'success',
+                            title: 'Signed in successfully'
+                        }).then(() => {
                             location.href = `/`
+                        })    
                     
                     }
                 }
@@ -124,6 +169,7 @@
 
     }
 </script>
+
 
 
 

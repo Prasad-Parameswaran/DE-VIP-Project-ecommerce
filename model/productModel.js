@@ -37,10 +37,11 @@ const product_schema = mongoose.Schema({
     stock:{
         type:Number,
         required:true
+    },
+    isDelete: {
+        type: Boolean,
+       default:true
     }
-
-
-
 },
 {
     timestaps:true

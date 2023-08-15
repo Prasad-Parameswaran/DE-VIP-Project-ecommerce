@@ -1,10 +1,11 @@
     <style>
-    .error-message {
-      color: red;
-      margin-top: 5px;
-      font-size: 12px;
-      display: none;
-    }
+  .error-message {
+  color: red;
+  margin-top: 5px;
+  font-size: 15px;
+  display: block;
+}
+
   </style>
         
         <!-- CATEGORY MP-MENU
@@ -141,14 +142,14 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
 
-                        <div class="common-block">
+<div class="common-block">
 
-                            <div class="inner-title">
-                                <h4 class="mb-0">Register</h4>
-                               <p style="color: brown;">{{message}}</p>
-                            </div>
+    <div class="inner-title">
+        <h4 class="mb-0">Register</h4>
+        <p class="error-message" style="color: brown;"></p>
+    </div>
 
-                            <form method="post" action="/registration" id="signupForm">
+    <form method="post" action="/registration" id="signupForm" name="form" onsubmit="return register()">
 
                                 <div class="row">
 
@@ -240,7 +241,7 @@
 
                                 </div>
 
-                                <button type="submit" id="submitbtn" class="butn-style2 mt-4"  >Register</button>
+        <button type="submit" id="submitbtn" class="butn-style2 mt-4">Register</button>
 
                             </form>
 
@@ -253,6 +254,78 @@
 	
 
 
+
+<script>
+function register() {
+    console.log("hiiiiiiiiiiiiiiiiiiiii")
+  var firstName = document.getElementById("nameInput").value;
+  var lastName = document.getElementById("userName").value;
+  var email = document.getElementById("emailInput").value;
+  var mobile = document.getElementById("phoneNumber").value;
+  var password = document.getElementById("password").value;
+
+  var reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var nameerror = /^[A-Za-z]+$/;
+  var phoneerror = /^[0-9]{10}$/;
+  var passerror = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/;
+  var error = document.querySelector(".error-message");
+
+  error.innerHTML = ""; 
+
+  if (firstName === "") {
+    error.innerHTML = 'Please enter your firstname';
+      setTimeout(function(){ error.innerHTML= "" }, 2000)
+    return false;
+  }
+  if (lastName === "") {
+    error.innerHTML = 'Please enter your lastname';
+      setTimeout(function(){ error.innerHTML= "" }, 2000)
+    return false;
+  }
+  if (nameerror.test(firstName) === false) {
+    error.innerHTML = 'Invalid firstname';
+      setTimeout(function(){ error.innerHTML= "" }, 2000)
+    return false;
+  }
+  if (nameerror.test(lastName) === false) {
+    error.innerHTML = 'Invalid lastname';
+      setTimeout(function(){ error.innerHTML= "" }, 2000)
+    return false;
+  }
+  if (firstName.length < 4) {
+    error.innerHTML = 'Name should contain at least 5 characters';
+      setTimeout(function(){ error.innerHTML= "" }, 2000)
+    return false;
+  }
+  if (lastName.length < 3) {
+    error.innerHTML = 'Name should contain at least 3 characters';
+      setTimeout(function(){ error.innerHTML= "" }, 2000)
+    return false;
+  }
+  if (email === "") {
+    error.innerHTML = 'Please enter your email id';
+      setTimeout(function(){ error.innerHTML= "" }, 2000)
+    return false;
+  }
+  if (reg.test(email) === false) {
+    error.innerHTML = 'Invalid email id';
+      setTimeout(function(){ error.innerHTML= "" }, 2000)
+    return false;
+  }
+  if (phoneerror.test(mobile) === false) {
+    error.innerHTML = 'Phone number should contain 10 numbers';
+      setTimeout(function(){ error.innerHTML= "" }, 2000)
+    return false;
+  }
+  if (passerror.test(password) === false) {
+    error.innerHTML = 'Password must contain 8 characters, at least one special character, and at least one uppercase letter';
+      setTimeout(function(){ error.innerHTML= "" }, 2000)
+    return false;
+  }
+
+  return true;
+}
+</script>
 
 
 

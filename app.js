@@ -1,18 +1,20 @@
 const createError = require('http-errors');
-const  express = require('express');
+const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const hbs = require('express-handlebars');
 const session = require("express-session");
 const multer = require("multer")
-const  indexRouter = require('./routes/users');
-const  adminRouter = require('./routes/admin');
-const  app = express();
+const indexRouter = require('./routes/users');
+const adminRouter = require('./routes/admin');
+const app = express();
 const handlebars = require("handlebars")
+const nocache = require("nocache");
 require('./config/connection');
-//multer
-app.use("/images", express.static(path.join(__dirname, 'images')));
+
+
+app.use(nocache());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,22 +40,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
-const fileStorage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, "images")
-  },
-  fileName: (req, file, callback) => {
-    callback(null, new Date().toISOString() + " " + file.orginalname);
-  }
-})
-
-
-app.use(multer({ dest: "images", storage: fileStorage }).array("image"))
-
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
+app.use("/images", express.static(path.join(__dirname, 'images')));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -71,27 +60,22 @@ app.use(function (err, req, res, next) {
   res.render('users/error');
 });
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
-});
-
-
-handlebars.registerHelper('addOne', function(index) {
+handlebars.registerHelper('addOne', function (index) {
   return index + 1;
 });
 
 handlebars.registerHelper('unlessEqual', function (value1, value2, options) {
   if (value1 !== value2) {
-      return options.fn(this);
+    return options.fn(this);
   } else {
-      return options.inverse(this);
+    return options.inverse(this);
   }
 })
 handlebars.registerHelper('Equal', function (value1, value2, options) {
   if (value1 === value2) {
-      return options.fn(this);
+    return options.fn(this);
   } else {
-      return options.inverse(this);
+    return options.inverse(this);
   }
 })
 
@@ -99,5 +83,12 @@ handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
   return (arg1 === arg2) ? options.fn(this) : options.inverse(this);
 });
 
+handlebars.registerHelper('calcProfit', function (totalPrice) {
+  return Math.round((totalPrice * 10) / 100);
+}
+)
 
-module.exports = app;
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
+

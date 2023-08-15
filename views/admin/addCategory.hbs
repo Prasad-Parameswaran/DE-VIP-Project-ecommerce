@@ -23,10 +23,14 @@
                                             <h4 class="card-title">Add your category description</h4>
                                              {{#if exist}}
                                               
-                                                <h6  id="message-div" style="color: brown;">category exist</h6>
-                                                 {{else}}
-                                             <h6  id="message-div" style="color: rgb(62, 217, 35);">category added</h6>  
+                                                <h6  id="message-div" style="color: brown; ">category exist</h6>
+                                                 {{else if addCaty}}
+                                             <h6  id="message-div" style="color: rgb(62, 217, 35); ">category added</h6>  
                                              {{/if}}
+                                             {{#if message}}
+                                             <h6  id="message-div" style="color: rgb(217, 44, 35); ">{{message}}</h6>  
+                                              {{/if}}
+                                             
                                         </div>
                                         <div class="card-body">
                                             <div class="form-group">
@@ -50,7 +54,7 @@
                                                         <div class="col-md-12">
                                                             <div>
                                                                 <input class="form-control form-control-lg" id="image"
-                                                                    name="image" type="file" />
+                                                                    name="image" type="file" accept="image/png, image/jpeg" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -94,4 +98,5 @@
             toast.innerText = '';
         }, 3000);
     }
+
 </script>

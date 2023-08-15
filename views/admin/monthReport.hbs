@@ -1,0 +1,168 @@
+<!-- PAGE INNER
+            ================================================== -->
+<div class="page-inner">
+
+    <!-- PAGE MAIN WRAPPER
+                ================================================== -->
+    <div id="main-wrapper">
+
+        <!-- row -->
+        <div class="row align-items-center g-3 grid-margin">
+            <div class="col-12">
+                <div class="card card-white">
+                    <div class="card-body row align-items-center">
+                        <div class="col-12 col-md-4">
+                            <h4 class="mb-4 mb-md-0">MONTH REPORT</h4>
+                        </div>
+
+                        <div class="col-12 col-md-8">
+                            <div class="row">
+                                <div class="col-md-3 mb-3 mb-md-0">
+                                    <button id="download-button" type="button" class="btn btn-primary">
+                                        <a href="/admin/yearReport">Year Report</a>
+                                    </button>
+                                </div>
+
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <button id="download-button" type="button" class="btn btn-primary">
+                                        <a href="/admin/monthReport"> Month Report</a>
+                                    </button>
+                                </div>
+
+                                 <div class="col-md-3 mb-3 mb-md-0">
+                                    <div style="padding: 5px;">
+                                           {{!-- <button onclick="printInvoice()" class="btn btn-dark">Print Invoice</button> --}}
+                                    <button id="button" class="btn btn-danger" onclick="htmlTableToExcel('xlsx')">DOWNLOAD EXCEL</button>
+
+                                       
+                                    <div class="col-md-3 mb-3 mb-md-0">
+                                 <div style="padding: 5px;">
+                                       <a id="download-button" onclick="generatePDF()" type="button"
+                                        class="btn btn-primary">
+                                        Download PDF
+                                    </a>
+                                   </div>
+                                  
+                                </div>
+
+                            </div>
+                        </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+        <!-- row -->
+        <div class="row">
+            <div class="col-12 grid-margin">
+                <div class="card card-white" id="table" border="2">
+                    <div class="card-body">
+                        <div class="table-responsive" id="invoice">
+                            <table class="table" id="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Total order</th>
+                                        <th scope="col">Total sold product</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Profit</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each salesReport}}
+                                    <tr>
+                                        {{!-- <th scope="row"></th> --}}
+                                        <td>{{_id.month}}</td>
+                                        <td>{{count}}</td>
+                                        <td>{{products}} </td>
+                                        <td>{{totalprice}} </td>
+                                       <td>₹ {{calcProfit totalprice}}</td>
+                                    </tr>
+                                    {{/each}}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</script>
+<script>
+//    const button = document.getElementById('download-button');
+
+   function generatePDF() {
+    console.log("download pdf")
+       // Choose the element that your content will be rendered to.
+       const element = document.getElementById('table');
+       // Choose the element and save the PDF for your user.
+       html2pdf().from(element).save();
+   }
+
+//    button.addEventListener('click', generatePDF);
+</script>
+<script>
+  $(document).ready(function () {
+      $('#table').DataTable();
+  });
+  </script>
+
+    
+{{!-- <script>
+  function printInvoice() {
+    var invoiceContent = document.getElementById('table');
+    var originalContent = document.body.innerHTML;
+
+    document.body.innerHTML = invoiceContent.innerHTML;
+    window.print();
+    document.body.innerHTML = originalContent;
+}
+
+</script> --}}
+
+
+<script>
+function htmlTableToExcel(type) {
+    var data = document.getElementById('table');
+    var wb = XLSX.utils.table_to_book(data);
+
+    // Create a blob from the workbook and initiate the download
+    var blob = new Blob([s2ab(XLSX.write(wb, { bookType: type, bookSST: true, type: 'binary' }))], {
+        type: 'application/octet-stream'
+    });
+
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'ExportedFile.xlsx';
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+// Utility function to convert a string to an ArrayBuffer
+function s2ab(s) {
+    var buf = new ArrayBuffer(s.length);
+    var view = new Uint8Array(buf);
+    for (var i = 0; i < s.length; i++) {
+        view[i] = s.charCodeAt(i) & 0xFF;
+    }
+    return buf;
+}
+
+</script>
+
+

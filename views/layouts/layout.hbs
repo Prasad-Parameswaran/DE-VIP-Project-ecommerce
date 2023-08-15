@@ -4,6 +4,9 @@
 
 
 <head>
+  {{#if error}}
+  {{>userHead}}
+  {{/if}}
   {{#if user}}
     {{>userHead}}
     {{/if}}
@@ -59,6 +62,10 @@
       {{#if adminlog}}
     {{>user-footer}}
      {{/if}}
+{{!-- 
+      {{#if error}}
+  {{>user-footer}}
+  {{/if}} --}}
    
 
    
