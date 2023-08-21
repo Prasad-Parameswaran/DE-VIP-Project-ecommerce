@@ -28,7 +28,10 @@
                                         <a href="/admin/monthReport"> Month Report</a>
                                     </button>
                                 </div>
+
+                                
  <div class="col-md-3 mb-3 mb-md-0">
+    
                                     <div style="padding: 5px;">
           <button id="button" class="btn btn-danger" onclick="htmlTableToExcel('xlsx')">DOWNLOAD EXCEL</button>
                                        
@@ -38,12 +41,42 @@
                                         class="btn btn-primary">
                                         DOWNLOAD PDF
                                     </a>
+                                    
                                    </div>
                                   
                                 </div>
 
                             </div>
+                            
                         </div>
+                        <form
+            action="/admin/salesReport"
+            class="d-flex"
+            onsubmit="return validateForm()"
+            method="GET"
+          >
+            <div class="p-2">
+              <input
+                class="form-control"
+                type="date"
+                value="{{value}}"
+                name="from"
+                id="startDate"
+              />
+            </div>
+            <div class="p-2">
+              <input
+                class="form-control"
+                type="date"
+                value="{{value}}"
+                name="to"
+                id="endDate"
+              />
+            </div>
+            <div class="p-2">
+              <button class="btn btn-primary" type="submit">Filter</button>
+            </div>
+          </form>
                             </div>
                         </div>
                     </div>

@@ -839,6 +839,33 @@ const cateSearch = async (req,res)=>{
 
 const adminSalesReport = async(req,res)=>{
   try {
+    const from = new Date(req.query.from);
+    const to = new Date(req.query.to);
+
+  if (from !="Invalid Date" || to !="Invalid Date"){
+
+    console.log("kkkkkkkkkkkkkkkkkkkkkkkkk",from,to)
+    const salesReport = await orderCls.aggregate([
+      {
+        $match: { createdAt:{ $gte:from,$lte : to},orderstatus: { $eq: "delivered" }},
+      },
+      {
+        $group: {
+          _id: {
+            month: { $month: "$createdAt" },
+            day: { $dayOfMonth: "$createdAt" },
+            year: { $year: "$createdAt" },
+          },
+          totalPrice: { $sum: "$totalprice" },
+          products: { $sum: { $size: "$products"}},
+          count: { $sum: 1 },
+        },
+      },
+      { $sort: { date: -1 } },
+    ])
+    res.render("admin/salesReport",{admin: true,salesReport})
+  }
+  else{
     const salesReport = await orderCls.aggregate([
       {
         $match: { orderstatus: { $eq: "delivered" } },
@@ -857,7 +884,9 @@ const adminSalesReport = async(req,res)=>{
       },
       { $sort: { date: -1 } },
     ])
+    console.log(salesReport,"jjjjjjjjjjjjj")
     res.render("admin/salesReport",{admin: true,salesReport})
+  }
   }
   catch(error){
     res.render("admin/adminError",{admin:true})
