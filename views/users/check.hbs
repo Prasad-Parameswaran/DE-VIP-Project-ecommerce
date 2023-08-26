@@ -621,8 +621,8 @@
                             document.getElementById('coupenErr').style.color = 'green';
                             document.getElementById('coupenErr').innerHTML = 'coupen added'
 
-                            document.getElementById('discountAmount').innerHTML = response.cutOff
-                            document.getElementById('totalAmount').innerHTML = '$' + response.calculateTotal
+                            document.getElementById('discountAmount').innerHTML = "₹"+ response.cutOff
+                            document.getElementById('totalAmount').innerHTML = '₹' + response.calculateTotal
                             document.getElementById('AppleyButton').style.display = 'none'
                         } else {
                             document.getElementById('coupenErr').style.color = 'red'

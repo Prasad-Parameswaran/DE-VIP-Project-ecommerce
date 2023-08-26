@@ -147,6 +147,8 @@
     <div class="inner-title">
         <h4 class="mb-0">Register</h4>
         <p class="error-message" style="color: brown;"></p>
+        <p class="error-message" style="color: brown;">{{message}}</p>
+       
     </div>
 
     <form method="post" action="/registration" id="signupForm" name="form" onsubmit="return register()">
@@ -251,9 +253,6 @@
                 </div>
             </div>
         </section>
-	
-
-
 
 <script>
 function register() {
@@ -322,7 +321,6 @@ function register() {
       setTimeout(function(){ error.innerHTML= "" }, 2000)
     return false;
   }
-
   return true;
 }
 </script>

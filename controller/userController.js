@@ -39,23 +39,13 @@ const sessionchecker = (req, res, next) => {
 
 const PostRegistration = async (req, res) => {
   try {
-    const { name, password, email, phoneNumber, userName, rePassword } =
-      req.body;
-    if (
-      name === "" ||
-      password === "" ||
-      email === "" ||
-      phoneNumber === "" ||
-      userName === "" ||
-      rePassword == ""
-    ) {
-      return;
-    }
-    const users = await userDb.findOne({ email: email });
+    const { name, password, email, phoneNumber, userName, rePassword } =  req.body;
+    const users = await userDb.findOne({ phoneNumber: phoneNumber });
+    console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",users)
     if (users) {
       res.render("users/registration", {
         login: true,
-        message: "email is already exist ",
+        message: "phoneNumber is already exist ",
       });
     } else {
       if (name && userName && email && phoneNumber && password && rePassword) {
@@ -127,8 +117,8 @@ const otp = async (req, res) => {
         console.log("-b", res);
       });
       req.session.user_detail = userdetails;
-      res.json("success")
-      // res.redirect("/login");
+      // res.json("success")
+      res.redirect("/login");
     } else {
       res.redirect("/otp");
     }

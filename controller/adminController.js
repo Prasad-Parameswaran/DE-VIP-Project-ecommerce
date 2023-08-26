@@ -353,7 +353,7 @@ const editProduct = async (req, res) => {
   try{
 
     const productId = req.params.id;
-    const product = await productsCls.findOne({ _id: productId }).lean();
+    const product = await productsCls.findOne({ _id: productId }).lean()
     const categories = await categoryCls.find().lean();
     res.render("admin/editProduct", { admin: true, product, categories });
   }catch(error){
@@ -366,12 +366,22 @@ const editProduct = async (req, res) => {
 
 const productEdit = async (req, res) => {
   try{
-
+    const productId = req.params.id;
     const { name, category, brand, Price, description, stock } = req.body;
+    const product = await productsCls.findOne({ _id: productId }).lean()
+    console.log(product.imageUrl[0],"11111",req.files)
     let image = [];
-    req.files.forEach((imageUrl) => {
-      image.push(imageUrl);
-    });
+    if(req.files.length > 0){
+      req.files.forEach((imageUrl) => {
+        image.push(imageUrl);
+      });
+    }
+    else{
+      console.log(product)
+      product.imageUrl.forEach((imageUrl) => {
+        image.push(imageUrl);
+      });
+     }
     Object.assign(req.body, {
       name: name,
       brand: brand,
@@ -841,10 +851,11 @@ const adminSalesReport = async(req,res)=>{
   try {
     const from = new Date(req.query.from);
     const to = new Date(req.query.to);
+    // const a = moment(from).format("MM/DD/YYYY")
+    // const b = moment(to).format("MM/DD/YYYY")
+    console.log(from,to,"MMMMMMMMMMMMMMMMMMMMMMMMMM")
 
   if (from !="Invalid Date" || to !="Invalid Date"){
-
-    console.log("kkkkkkkkkkkkkkkkkkkkkkkkk",from,to)
     const salesReport = await orderCls.aggregate([
       {
         $match: { createdAt:{ $gte:from,$lte : to},orderstatus: { $eq: "delivered" }},
@@ -863,6 +874,7 @@ const adminSalesReport = async(req,res)=>{
       },
       { $sort: { date: -1 } },
     ])
+    console.log(salesReport,'sales report');
     res.render("admin/salesReport",{admin: true,salesReport})
   }
   else{
@@ -892,7 +904,6 @@ const adminSalesReport = async(req,res)=>{
     res.render("admin/adminError",{admin:true})
   }
 }
-
 
 const adminSalesReportcancell = async(req,res)=>{
   try {
